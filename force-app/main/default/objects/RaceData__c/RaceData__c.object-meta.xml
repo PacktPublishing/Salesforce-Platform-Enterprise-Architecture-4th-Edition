@@ -49,20 +49,19 @@
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>true</enableFeeds>
+    <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>Contestant</label>
+    <label>Race Data</label>
     <nameField>
-        <displayFormat>CONTESTANT-{00000000}</displayFormat>
-        <label>Contestant Name</label>
-        <trackFeedHistory>false</trackFeedHistory>
+        <displayFormat>RDID-{00000000}</displayFormat>
+        <label>Race Data Id</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Contestants</pluralLabel>
+    <pluralLabel>Race Data</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

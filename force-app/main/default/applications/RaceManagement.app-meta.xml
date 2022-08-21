@@ -8,4 +8,5 @@
     <tabs>Driver__c</tabs>
     <tabs>Season__c</tabs>
     <tabs>Race__c</tabs>
+    <tabs>RaceData__c</tabs>    
 </CustomApplication>
