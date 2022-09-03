@@ -7,7 +7,7 @@
     <label>Fastest Lap By</label>
     <referenceTo>Driver__c</referenceTo>
     <relationshipLabel>Races</relationshipLabel>
-    <relationshipName>RacesBySeason</relationshipName>
+    <relationshipName>FastestLapByDriver</relationshipName>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackTrending>false</trackTrending>
