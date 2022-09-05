@@ -20,7 +20,7 @@ public inherited sharing class ChampionshipPointsSelector extends fflib_SObjectS
             new Map<Integer, ChampionshipPoint__mdt>();
 
         // Query custom metadata records and parse track position from DeveloperName field            
-        for(ChampionshipPoint__mdt record : Database.query(newQueryFactory().toSOQL())) {
+        for(ChampionshipPoint__mdt record : ChampionshipPoint__mdt.getAll().values()) {
             Integer trackPosition = Integer.valueOf(record.DeveloperName.remove('TrackPosition'));
             pointsByTrackPosition.put(trackPosition, record);
         }

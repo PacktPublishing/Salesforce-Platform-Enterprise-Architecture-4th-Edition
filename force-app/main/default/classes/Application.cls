@@ -31,8 +31,7 @@ public class Application {
             super(serviceInterfaceTypeByServiceImplType);
             
             // Map of overriden services defined by the developer in this org
-            for(Service__mdt serviceOverride : 
-                    [select DeveloperName, NamespacePrefix, ApexClass__c from Service__mdt]) {
+            for(Service__mdt serviceOverride : Service__mdt.getAll().values()) {
                 servicesByClassName.put(
                     serviceOverride.NamespacePrefix + '.' + serviceOverride.DeveloperName, 
                     serviceOverride.ApexClass__c);                
