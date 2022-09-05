@@ -1,9 +1,12 @@
 @isTest
-private class SeasonControllerTest 
-{	
-	@isTest static void testNewsletter()
-	{
-		// TODO: Stub test
-		new SeasonController(null).sendNewsletter();
+private class SeasonControllerTest {
+    	
+	@isTest static void testNewsletter() {
+		try {
+			SeasonController.sendNewsletter(null);
+			System.assert(false);
+		} catch (AuraHandledException e) {
+			System.assertEquals('Not implemented', e.getMessage());			
+		}		
 	}
 }

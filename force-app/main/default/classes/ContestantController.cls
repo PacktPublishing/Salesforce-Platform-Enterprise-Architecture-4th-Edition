@@ -1,13 +1,12 @@
-public with sharing class ContestantController 
-{
-    public ContestantController(ApexPages.StandardController stdController) 
-    {
-    }
-
-    public PageReference awardPoints()
-    {
-        ContestantService.awardChampionshipPoints(null);
-        
-        return null;
+public with sharing class ContestantController {
+    
+    @AuraEnabled
+    public static void awardPoints(Id contestantId) {
+    	try {
+        	ContestantService.awardChampionshipPoints(new Set<Id> { contestantId });
+        }
+        catch (Exception e) {
+        	Application.throwAuraHandledException(e);
+        }        
     }
 }
