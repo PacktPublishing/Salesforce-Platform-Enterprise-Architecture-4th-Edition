@@ -1,8 +1,9 @@
-public class Application {
+public class Application { 
+    
     
 	// Configure and create the UnitOfWorkFactory for this Application
-	public static final fflib_Application.UnitOfWorkFactory UnitOfWork = 
-		new fflib_Application.UnitOfWorkFactory(
+	public static final Application.UnitOfWorkFactory UnitOfWork = 
+		new Application.UnitOfWorkFactory(
 				new List<SObjectType> { 
 					Driver__c.SObjectType, 
 					Season__c.SObjectType, 
@@ -10,7 +11,7 @@ public class Application {
 				  	Contestant__c.SObjectType });
 				  	
     // Configure and create the ServiceFactory for this Application
-    public static final fflib_Application.ServiceFactory Service = 
+    public static final fflib_Application.ServiceFactory Service =
         new Application.ServiceFactory( 
             new Map<Type, Type> {
                     IRaceService.class => RaceServiceImpl.class });
@@ -18,10 +19,58 @@ public class Application {
     // Configure and create the SelectorFactory for this Application
     public static final fflib_Application.SelectorFactory Selector = 
         new fflib_Application.SelectorFactory(
+            // Map SObjectType to Selector Class
             new Map<SObjectType, Type> {
-                // Opportunity.SObjectType => OpportunitiesSelector.class,
-                }); 
-           
+                    Team__c.SObjectType => TeamsSelector.class,
+                    Race__c.SObjectType => RacesSelector.class,
+                    Car__c.SObjectType => CarsSelector.class,
+                    Driver__c.SObjectType => DriversSelector.class,
+                    Contestant__c.SObjectType => ContestantsSelector.class }); 
+                    
+	// Configure and create the DomainFactory for this Application
+	public static final fflib_Application.DomainFactory Domain = 
+		new fflib_Application.DomainFactory(
+			Application.Selector,
+			// Map SObjectType to Domain Class Constructors 
+			new Map<SObjectType, Type> {
+					Team__c.SObjectType => Teams.Constructor.class,
+					Race__c.SObjectType => Races.Constructor.class,
+					Car__c.SObjectType => Cars.Constructor.class,
+					Driver__c.SObjectType => Drivers.Constructor.class,
+					Contestant__c.SObjectType => Contestants.Constructor.class });                    
+         
+    // Customised Unit of Work factory defaults to user mode with option to revert to system mode
+    public class UnitOfWorkFactory extends fflib_Application.UnitOfWorkFactory {
+        public UnitOfWorkFactory(List<SObjectType> objectTypes) {
+            super(objectTypes);
+        }
+        public override fflib_ISObjectUnitOfWork newInstance() {
+            return newInstance(AccessLevel.USER_MODE);
+        }
+        public fflib_ISObjectUnitOfWork newInstance(AccessLevel accessLevel) {
+            return newInstance(new UnifOfWorkDMLWithAccessLevel(accessLevel));
+        }
+    }
+
+    public class UnifOfWorkDMLWithAccessLevel extends fflib_SObjectUnitOfWork.SimpleDML {
+        private AccessLevel accessLevel;
+        public UnifOfWorkDMLWithAccessLevel(AccessLevel accessLevel) {
+            this.accessLevel = accessLevel;
+        }
+        public override void dmlInsert(List<SObject> objList)
+        {
+            Database.insert(objList, accessLevel);
+        }
+        public override void dmlUpdate(List<SObject> objList)
+        {
+            Database.update(objList, accessLevel);
+        }
+        public override void dmlDelete(List<SObject> objList)
+        {
+            Database.delete(objList, accessLevel);
+        }
+    }
+
     // Customised Service factory to support developer overrides via Custom Metadata (see Chapter 5)      
     private class ServiceFactory extends fflib_Application.ServiceFactory {
         
