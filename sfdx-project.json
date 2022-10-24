@@ -1,6 +1,14 @@
 {
   "packageDirectories": [
     {
+      "path": "sfdx-source/fflib-apex-mocks",
+      "default": false
+    },
+    {
+      "path": "sfdx-source/fflib-apex-common",
+      "default": false
+    },
+    {
       "path": "force-app",
       "default": true
     }
