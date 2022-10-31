@@ -19,7 +19,7 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		// Only permit new contestants to be added to Scheduled races
 		for(Contestant__c contestant : (List<Contestant__c>) Records) {
 			Race__c race = associatedRaces.get(contestant.Race__c);
-			if(race.Status__c != 'Scheduled') {
+			if(!'Scheduled'.equals(race.Status__c)) {
                 contestant.addError( 'Contestants can only be added to scheduled races');			    
 			}
 		}
@@ -38,7 +38,7 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		// Can only change drivers in scheduled races
 		for(Contestant__c contestant : changedDrivers) { 
 			Race__c contestantRace = associatedRaces.get(contestant.Race__c);
-			if(contestantRace.Status__c != 'Scheduled') {
+			if(!'Scheduled'.equals(contestantRace.Status__c)) {
                 contestant.Driver__c.addError( 'You can only change drivers for scheduled races' );			       
             }
 		}
