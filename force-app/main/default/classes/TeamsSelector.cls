@@ -1,4 +1,4 @@
-public inherited sharing class TeamsSelector extends fflib_SObjectSelector {
+public inherited sharing class TeamsSelector extends ApplicationSelector {
 	
 	public List<Schema.SObjectField> getSObjectFieldList() {
 		return new List<Schema.SObjectField> {

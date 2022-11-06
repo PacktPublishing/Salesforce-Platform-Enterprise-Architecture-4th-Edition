@@ -1,4 +1,4 @@
-public inherited sharing class ChampionshipPointsSelector extends fflib_SObjectSelector {
+public inherited sharing class ChampionshipPointsSelector extends ApplicationSelector {
     
     public List<Schema.SObjectField> getSObjectFieldList()
     {
