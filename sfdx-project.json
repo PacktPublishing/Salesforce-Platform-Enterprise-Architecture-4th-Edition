@@ -1,10 +1,19 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
+      "path": "source/fflib-apex-mocks",
+      "default": false
+    },
+    {
+      "path": "source/fflib-apex-common",
+      "default": false
+    },
+    {
+      "path": "source/formulaforce",
       "default": true
     }
   ],
+  
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "55.0"
