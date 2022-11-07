@@ -1,3 +1,9 @@
+import { LightningElement } from 'lwc';
+
+export default class HelloWorldApp extends LightningElement {}
+
+/**
+
 var jsforce = require('jsforce');
 const express = require('express')
 const session = require('express-session');
@@ -64,3 +70,5 @@ app.get('/', function(req, res) {
 
 // Start the web server up!
 app.listen(port, () => console.log(`Listening on port ${port}!`))
+
+**/
