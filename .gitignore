@@ -2,6 +2,8 @@
 .sfdx
 .sf
 .vscode
+dist
+SLDS
 node_modules
 /source/formulaforceweb/src/assets/icons
 /source/formulaforceweb/src/assets/images

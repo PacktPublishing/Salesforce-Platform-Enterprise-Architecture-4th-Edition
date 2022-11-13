@@ -19,9 +19,9 @@
     ],
     "routes": [
         {
-            "id": "example",
+            "id": "ff",
             "path": "/",
-            "rootComponent": "example/app",
+            "rootComponent": "ff/app",
             "layoutTemplate": "$layoutsDir/main.html",
             "bootstrap": {
                 "syntheticShadow": true

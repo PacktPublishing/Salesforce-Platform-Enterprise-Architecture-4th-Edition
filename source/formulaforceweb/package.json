@@ -10,7 +10,8 @@
     "build": "node ./scripts/copy-slds.mjs",
     "start": "lwr serve --mode prod",
     "start:compat": "lwr serve --mode compat",
-    "start:prod-compat": "lwr serve --mode prod-compat"
+    "start:prod-compat": "lwr serve --mode prod-compat",
+    "start-express" : "node src/server/server.js"
   },
   "dependencies": {
     "cpx": "^1.5.0",
