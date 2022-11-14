@@ -11,6 +11,10 @@ public with sharing class RaceService {
 	public static void awardChampionshipPoints(Set<Id> raceIds) {
 		service().awardChampionshipPoints(raceIds);
 	}
+	
+	public static String generateSummaryAsCSV(Set<Id> raceIds) {
+		return service().generateSummaryAsCSV(raceIds);
+	}
 
 	private static IRaceService service() {
 		return (IRaceService) Application.Service.newInstance(IRaceService.class);

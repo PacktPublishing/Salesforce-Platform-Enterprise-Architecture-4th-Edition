@@ -5,4 +5,6 @@ public interface IRaceService {
     void applyRaceResults(Map<Id, List<RaceService.ProvisionalResult>> provisionalResultsByRaceId);
     
     void awardChampionshipPoints(Set<Id> raceIds);
+    
+	String generateSummaryAsCSV(Set<Id> raceIds);    
 }

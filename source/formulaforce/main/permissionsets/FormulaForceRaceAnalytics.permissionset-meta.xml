@@ -69,6 +69,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Contestant__c.RetirementReason__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Driver__c.Active__c</field>
         <readable>false</readable>
@@ -172,6 +177,22 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>complianceteam</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>flsdemo</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>outofrace</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>racesummary</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>racesummaryascsv</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <tabSettings>

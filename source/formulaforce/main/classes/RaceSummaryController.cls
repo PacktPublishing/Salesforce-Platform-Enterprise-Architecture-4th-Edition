@@ -28,4 +28,10 @@ public with sharing class RaceSummaryController  {
 		}
 		return null;
 	}
+	
+	@AuraEnabled
+	public static String getCSVContent(String raceId) {
+		return RaceService.generateSummaryAsCSV(
+			new Set<Id> { raceId });
+	}	
 }

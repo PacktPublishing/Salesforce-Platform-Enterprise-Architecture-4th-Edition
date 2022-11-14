@@ -25,4 +25,8 @@ public inherited sharing class RaceServiceImplStub implements IRaceService {
     public void awardChampionshipPoints(Set<Id> raceIds) {
         throw new RaceService.RaceServiceException('Not implemented');
     }    
+    
+	public String generateSummaryAsCSV(Set<Id> raceIds) {
+        throw new RaceService.RaceServiceException('Not implemented');
+	}    
 }
