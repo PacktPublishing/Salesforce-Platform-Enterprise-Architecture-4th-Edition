@@ -2,6 +2,7 @@
 .sfdx
 .sf
 .vscode
+.env
 dist
 SLDS
 node_modules

@@ -16,7 +16,10 @@
   "dependencies": {
     "cpx": "^1.5.0",
     "lwc": "2.17.0",
-    "lwr": "0.8.3"
+    "lwr": "0.8.3",
+    "express-session": "^1.16.2",
+    "jsforce": "^1.9.2",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@salesforce-ux/design-system": "^2.17.5"
