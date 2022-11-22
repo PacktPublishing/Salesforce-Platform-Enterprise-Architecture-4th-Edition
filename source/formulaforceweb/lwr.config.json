@@ -1,6 +1,9 @@
 {
     "lwc": {
-        "modules": [{ "dir": "$rootDir/src/modules" }]
+        "modules": [
+            { "dir": "$rootDir/src/modules" },
+            { "npm": "lightning-base-components" }
+        ]
     },
     "assets": [
         {

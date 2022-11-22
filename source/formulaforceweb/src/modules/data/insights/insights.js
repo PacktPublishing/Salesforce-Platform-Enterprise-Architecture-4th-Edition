@@ -1,7 +1,7 @@
-const URL = '/api/races/';
-let races = [];
+const URL = '/api/insights/';
+let insights = {};
 
-export const getRaces = () =>
+export const getInsights = () =>
     fetch(URL)
         .then((response) => {
             if (!response.ok) {
@@ -10,6 +10,6 @@ export const getRaces = () =>
             return response.json();
         })
         .then((result) => {
-            races = result.summary;
-            return races;
+            insights = result;
+            return insights;
         });

@@ -2,7 +2,7 @@ import { createServer } from "lwr";
 import session from "express-session"
 import jsforce from "jsforce"
 import dotenv from "dotenv";
-import RaceService from "./races.js";
+import InsightsService from "./insights.js";
 
 // Load .env configuration file
 dotenv.config();
@@ -67,9 +67,34 @@ expressApp.get('/oauth2/callback', function(req, res) {
     });
 });
 
+//
+// Handle oAuth logout
+//
+expressApp.get('/oauth2/logout', function(req, res) {
+    var conn = new jsforce.Connection({
+        oauth2 : oauth2,
+        accessToken: req.session.accessToken, 
+        instanceUrl: req.session.instanceUrl });
+    conn.logout((error) => {
+        if (error) {
+            console.error('Failed to revoke authentication token: ' + error);
+            res.status(500).json(error);
+        } else {
+            req.session.destroy((err) => {
+                if (err) {
+                    console.error('Failed to destroy server session: ' + err);
+                    res.status(500).send('Failed to destroy server session');
+                } else {
+                    res.redirect('/');
+                }
+            });
+        }
+    });
+});
+
 // Add FormulaForce API's
-const raceService = new RaceService();
-expressApp.get('/api/races', function(req, res) { raceService.getRaces(req, res); });
+const insightsService = new InsightsService();
+expressApp.get('/api/insights', function(req, res) { insightsService.get(req, res); });
 
 // Start the server
 lwrServer
