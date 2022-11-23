@@ -1,11 +1,11 @@
 import { createServer } from "lwr";
 import { connector } from "swagger-routes-express"
 import swaggerUi from 'swagger-ui-express'
+import swaggerJSDoc from 'swagger-jsdoc'
 import session from "express-session"
 import jsforce from "jsforce"
 import dotenv from "dotenv";
-import YAML from "yamljs"
-import api from "./api/index.js"
+import api from "./api/insights.js"
 
 // Load .env configuration file
 dotenv.config();
@@ -86,9 +86,21 @@ expressApp.get('/oauth2/logout', function(req, res) {
 });
 
 // Add APIs
-const apiDefinition = YAML.load('./src/server/api.yaml') // load the api as json
+const swaggerDefinition = {
+    openapi: '3.0.0',
+    info: {
+      title: 'FormulaForce API',
+      version: '1.0.0',
+    },
+    servers: [ { url: '/api/' } ]    
+  };
+const options = {
+    swaggerDefinition,
+    apis: ['./src/server/api/*.js'],
+};  
+const apiDefinition = swaggerJSDoc(options);
 const connect = connector(api, apiDefinition) // make the connector
-connect(expressApp);
+connect(expressApp); // configure API routes
 expressApp.get("/api-docs/swagger.json", (req, res) => res.json(apiDefinition));
 expressApp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDefinition));
 

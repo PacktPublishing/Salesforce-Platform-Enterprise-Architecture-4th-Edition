@@ -1,8 +1,37 @@
 import jsforce from "jsforce"
 import pg from "pg";
-const { Client } = pg;
 
-// GET /api/insights API
+/**
+ *  @openapi
+ *  /insights:
+ *    get:
+ *      description: Returns Formula1 insights
+ *      operationId: insights
+ *      responses:
+ *        '200':
+ *          description: success 
+ *          content:
+ *             application/json:
+ *                schema: 
+ *                   type: object
+ *                   properties:
+ *                      latestResults:
+ *                         type: object
+ *                         properties:
+ *                            race:
+ *                               type: string
+ *                            winner:
+ *                               type: string
+ *                      championShipPrediction:
+ *                         type: object
+ *                         properties:
+ *                            first:
+ *                               type: string
+ *                            second:
+ *                               type: string
+ *                            third:
+ *                               type: string
+ */
 const insights = async function (req, res) {
 
    // Response
@@ -12,7 +41,7 @@ const insights = async function (req, res) {
    var partnerAuth = req.session.accessToken!=null ? true : false;
 
    // Query latest race results from Postgres (syncronized from attached Salesforce Org via Heroku Connect)
-   const client = new Client({
+   const client = new pg.Client({
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false }
       });
