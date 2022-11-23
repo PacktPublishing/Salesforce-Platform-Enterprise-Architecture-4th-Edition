@@ -25,9 +25,7 @@ const lwrServer = createServer({
 // Get the internal Express server from within the LWR Server
 const expressApp = lwrServer.getInternalServer("express");
   
-//
 // Configure express-session to store Session Id and Instance URL
-//
 expressApp.use(
     session({ 
         secret: NODE_SESSION_SECRET_KEY, 
@@ -35,9 +33,7 @@ expressApp.use(
         resave: false, 
         saveUninitialized: false}))
 
-//
 // OAuth2 client information can be shared with multiple connections.
-//
 var oauth2 = new jsforce.OAuth2({
   loginUrl : SALESFORCE_LOGIN_DOMAIN,
   clientId : SALESFORCE_CLIENT_ID,
@@ -45,19 +41,15 @@ var oauth2 = new jsforce.OAuth2({
   redirectUri : SALESFORCE_CALLBACK_URL
 });
 
-//
 // Get authorization url and redirect to it.
-//
 expressApp.get('/oauth2/auth', function(req, res) {
   res.redirect(oauth2.getAuthorizationUrl({ scope : 'api id web refresh_token' }));
 });
 
-//
 // Handle oAuth callback and extract and store session token
-//
 expressApp.get('/oauth2/callback', function(req, res) {
     var conn = new jsforce.Connection({ oauth2 : oauth2 });
-    var code = req.param('code');
+    var code = req.query['code'];
     conn.authorize(code, function(err, userInfo) {
       if (err) { return console.error(err); }
       req.session.accessToken = conn.accessToken;
@@ -67,9 +59,7 @@ expressApp.get('/oauth2/callback', function(req, res) {
     });
 });
 
-//
 // Handle oAuth logout
-//
 expressApp.get('/oauth2/logout', function(req, res) {
     var conn = new jsforce.Connection({
         oauth2 : oauth2,
