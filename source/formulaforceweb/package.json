@@ -12,7 +12,7 @@
     "start:compat": "lwr serve --mode compat",
     "start:prod-compat": "lwr serve --mode prod-compat",
     "start:express": "node src/server/server.js",
-    "insert:race:predictions" : "node scripts/insert-race-predictions.js"
+    "insert:race:predictions": "node scripts/insert-race-predictions.js"
   },
   "dependencies": {
     "cpx": "^1.5.0",
@@ -21,7 +21,11 @@
     "jsforce": "^1.9.2",
     "lwc": "2.17.0",
     "lwr": "0.8.3",
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-routes-express": "^3.3.2",
+    "swagger-ui-express": "^4.6.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@salesforce-ux/design-system": "^2.17.5",

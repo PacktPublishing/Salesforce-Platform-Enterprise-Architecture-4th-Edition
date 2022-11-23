@@ -1,8 +1,11 @@
 import { createServer } from "lwr";
+import { connector } from "swagger-routes-express"
+import swaggerUi from 'swagger-ui-express'
 import session from "express-session"
 import jsforce from "jsforce"
 import dotenv from "dotenv";
-import InsightsService from "./services/insights.js";
+import YAML from "yamljs"
+import api from "./api/index.js"
 
 // Load .env configuration file
 dotenv.config();
@@ -82,9 +85,12 @@ expressApp.get('/oauth2/logout', function(req, res) {
     });
 });
 
-// Add FormulaForce API's
-const insightsService = new InsightsService();
-expressApp.get('/api/insights', function(req, res) { insightsService.get(req, res); });
+// Add APIs
+const apiDefinition = YAML.load('./src/server/api.yaml') // load the api as json
+const connect = connector(api, apiDefinition) // make the connector
+connect(expressApp);
+expressApp.get("/api-docs/swagger.json", (req, res) => res.json(apiDefinition));
+expressApp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDefinition));
 
 // Start the server
 lwrServer

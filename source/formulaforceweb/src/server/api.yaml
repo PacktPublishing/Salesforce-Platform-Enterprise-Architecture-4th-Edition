@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  description: FormulaForce API
+  version: 1.0.0
+  title: FormulaForce API
+paths:
+  /insights:
+    get:
+      tags:
+        - root
+      summary: Return Formula1 insights
+      description: Returns Formula1 insights
+      operationId: insights
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Insights'
+servers:
+  - url: /api/
+components:
+  schemas:
+    Insights:
+      type: object
