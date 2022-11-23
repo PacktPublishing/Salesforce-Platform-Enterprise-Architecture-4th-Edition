@@ -22,9 +22,9 @@
     ],
     "routes": [
         {
-            "id": "ff",
+            "id": "formulaforceweb",
             "path": "/",
-            "rootComponent": "ff/app",
+            "rootComponent": "c/app",
             "layoutTemplate": "$layoutsDir/main.html",
             "bootstrap": {
                 "syntheticShadow": true
