@@ -1,5 +1,5 @@
 <template>    
-    <template if:true={areDetailsVisible}>
+    <template if:true={insightsLoaded}>
         <lightning-card  title="Latest Formula1 Motor Racing Insights">
             <lightning-button label={loginButtonLabel} slot="actions" onclick={handlePartnerLogin}></lightning-button>
             <div class="slds-p-around_medium lgc-bg">
@@ -11,16 +11,22 @@
                 <lightning-tile label="Championship Prediction">
                     <dl class="slds-dl_horizontal">
                         <dt class="slds-dl_horizontal__label">
-                            <p class="slds-truncate" title="Company">Company:</p>
+                            <p class="slds-truncate">First:</p>
                         </dt>
                         <dd class="slds-dl_horizontal__detail slds-tile__meta">
-                            <p class="slds-truncate" title="Salesforce">Salesforce</p>
+                            <p class="slds-truncate">{insight.championShipPrediction.first} {insight.championShipPrediction.firstAccuracy}</p>
                         </dd>
                         <dt class="slds-dl_horizontal__label">
-                            <p class="slds-truncate" title="Email">Email:</p>
+                            <p class="slds-truncate">Second:</p>
                         </dt>
                         <dd class="slds-dl_horizontal__detail slds-tile__meta">
-                            <p class="slds-truncate" title="salesforce-ux@salesforce.com">salesforce-ux@salesforce.com</p>
+                            <p class="slds-truncate">{insight.championShipPrediction.second} {insight.championShipPrediction.secondAccuracy}</p>
+                        </dd>
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate">Third:</p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate">{insight.championShipPrediction.third} {insight.championShipPrediction.thirdAccuracy}</p>                            
                         </dd>
                     </dl>
                 </lightning-tile>
@@ -30,16 +36,22 @@
                     <lightning-tile label="Partner Status">
                         <dl class="slds-dl_horizontal">
                             <dt class="slds-dl_horizontal__label">
-                                <p class="slds-truncate" title="Status">Status:</p>
+                                <p class="slds-truncate">Name:</p>
                             </dt>
                             <dd class="slds-dl_horizontal__detail slds-tile__meta">
-                                <p class="slds-truncate" title="ACtive">Active</p>
+                                <p class="slds-truncate">{insight.partnerStatus.name}</p>
                             </dd>
                             <dt class="slds-dl_horizontal__label">
-                                <p class="slds-truncate" title="Coverage">Coverage:</p>
+                                <p class="slds-truncate">Level:</p>
                             </dt>
                             <dd class="slds-dl_horizontal__detail slds-tile__meta">
-                                <lightning-progress-ring value="40"> </lightning-progress-ring>
+                                <p class="slds-truncate">{insight.partnerStatus.level}</p>
+                            </dd>
+                            <dt class="slds-dl_horizontal__label">
+                                <p class="slds-truncate">Season Media Coverage:</p>
+                            </dt>
+                            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                <lightning-progress-ring value={insight.partnerStatus.seasonCoverage}> </lightning-progress-ring>
                             </dd>
                         </dl>
                     </lightning-tile>

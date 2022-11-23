@@ -2,7 +2,7 @@ import { createServer } from "lwr";
 import session from "express-session"
 import jsforce from "jsforce"
 import dotenv from "dotenv";
-import InsightsService from "./insights.js";
+import InsightsService from "./services/insights.js";
 
 // Load .env configuration file
 dotenv.config();
