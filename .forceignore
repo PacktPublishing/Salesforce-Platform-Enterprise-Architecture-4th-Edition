@@ -1,2 +1,5 @@
 source/formulaforce/main/default/profiles
 source/formulaforce/main/default/appMenus
+**/jsconfig.json
+
+**/.eslintrc.json
