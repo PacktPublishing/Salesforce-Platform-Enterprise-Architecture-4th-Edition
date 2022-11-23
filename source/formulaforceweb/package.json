@@ -22,11 +22,10 @@
     "swagger-jsdoc": "^6.2.5",
     "swagger-routes-express": "^3.3.2",
     "swagger-ui-express": "^4.6.0",
-    "yamljs": "^0.3.0"
+    "lightning-base-components": "^1.14.6-alpha"
   },
   "devDependencies": {
-    "@salesforce-ux/design-system": "^2.17.5",
-    "lightning-base-components": "^1.14.6-alpha"
+    "@salesforce-ux/design-system": "^2.17.5"
   },
   "engines": {
     "node": ">=14.15.4 <19",
