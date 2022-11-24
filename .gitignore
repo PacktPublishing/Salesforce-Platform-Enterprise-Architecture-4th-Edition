@@ -6,6 +6,7 @@
 dist
 SLDS
 node_modules
+deploy-options.json
 **/target
 /source/formulaforceweb/src/assets/icons
 /source/formulaforceweb/src/assets/images
