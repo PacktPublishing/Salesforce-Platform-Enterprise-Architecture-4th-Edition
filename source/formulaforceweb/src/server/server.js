@@ -29,12 +29,14 @@ const lwrServer = createServer({
 const expressApp = lwrServer.getInternalServer("express");
   
 // Configure express-session to store Session Id and Instance URL
-expressApp.use(
-    session({ 
-        secret: NODE_SESSION_SECRET_KEY, 
-        cookie: { secure: 'auto' },
-        resave: false, 
-        saveUninitialized: false}))
+if(NODE_SESSION_SECRET_KEY) {
+    expressApp.use(
+        session({ 
+            secret: NODE_SESSION_SECRET_KEY, 
+            cookie: { secure: 'auto' },
+            resave: false, 
+            saveUninitialized: false}))    
+}
 
 // OAuth2 client information can be shared with multiple connections.
 var oauth2 = new jsforce.OAuth2({

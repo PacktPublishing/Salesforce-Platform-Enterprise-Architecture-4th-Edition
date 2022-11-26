@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf __lwr_cache__",
-    "dev": "node ./src/server/server.js",
+    "dev": "NODE_ENV=development node ./src/server/server.js",
     "build": "node ./scripts/copy-slds.mjs",
     "start": "node ./src/server/server.js",
     "insert:race:predictions": "node ./scripts/insert-race-predictions.js"
