@@ -11,7 +11,7 @@ const client = new Client({
 await client.connect();
 
 // Create raceinsights table with some examples insights in it
-await client.query('DROP TABLE raceinsights');
+await client.query('DROP TABLE IF EXISTS raceinsights');
 await client.query('CREATE TABLE raceinsights (' +
     'first varchar(32), ' +
     'firstaccuracy int, ' +

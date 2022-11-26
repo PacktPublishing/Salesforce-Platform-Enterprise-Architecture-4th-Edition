@@ -2,7 +2,7 @@
     <template if:true={insightsLoaded}>
         <lightning-card  title="Latest Formula1 Motor Racing Insights">
             <lightning-button label={loginButtonLabel} slot="actions" onclick={handlePartnerLogin}></lightning-button>
-            <div class="slds-p-around_medium lgc-bg">
+            <div class="slds-p-around_medium lgc-bg" if:true={insight.latestResults}>
                 <lightning-tile label="Latest Race Results">
                     <p class="slds-truncate">{insight.latestResults.winner} won {insight.latestResults.race}.</p>
                 </lightning-tile>
