@@ -96,13 +96,12 @@ const swaggerDefinition = {
     },
     servers: [ { url: '/api/' } ]    
   };
-const options = {
+const swaggerJSDocOptions  = {
     swaggerDefinition,
     apis: ['./src/server/api/*.js'],
 };  
-const apiDefinition = swaggerJSDoc(options);
-const connect = connector(api, apiDefinition) // make the connector
-connect(expressApp); // configure API routes
+const apiDefinition = swaggerJSDoc(swaggerJSDocOptions );
+connector(api, apiDefinition)(expressApp); // api is an export from /api/insight.js 
 expressApp.get("/api-docs/swagger.json", (req, res) => res.json(apiDefinition));
 expressApp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDefinition));
 
