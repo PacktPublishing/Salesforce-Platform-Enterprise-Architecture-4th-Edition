@@ -74,6 +74,13 @@ const insights = async function (req, res) {
          response.championShipPrediction.first = predictions[0].first;
          response.championShipPrediction.second = predictions[0].second;
          response.championShipPrediction.third = predictions[0].third;
+         // Add additional response data for authenticated FormulaForce partners?
+         if(partnerAuth) {
+            // Partners get to see prediction accuracy
+            response.championShipPrediction.firstAccuracy = '(' + predictions[0].firstaccuracy + '%)';
+            response.championShipPrediction.secondAccuracy = '(' + predictions[0].secondaccuracy + '%)';
+            response.championShipPrediction.thirdAccuracy = '(' + predictions[0].thirdaccuracy + '%)';
+         }
       }   
 
       // Only run this query if Heroku Connect has been configured for this app
@@ -94,10 +101,6 @@ const insights = async function (req, res) {
 
    // Add additional response data for authenticated FormulaForce partners?
    if(partnerAuth) {
-      // Partners get to see prediction accuracy
-      response.championShipPrediction.firstAccuracy = '(' + predictions[0].firstaccuracy + '%)';
-      response.championShipPrediction.secondAccuracy = '(' + predictions[0].secondaccuracy + '%)';
-      response.championShipPrediction.thirdAccuracy = '(' + predictions[0].thirdaccuracy + '%)';
       // Retrieve Partner information from Account object
       var conn = new jsforce.Connection({
          accessToken: req.session.accessToken, 
