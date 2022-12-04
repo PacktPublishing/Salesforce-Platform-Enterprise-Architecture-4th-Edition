@@ -1,0 +1,63 @@
+<template>    
+    <template if:true={insightsLoaded}>
+        <lightning-card  title="Latest Formula1 Motor Racing Insights">
+            <lightning-button label={loginButtonLabel} slot="actions" onclick={handlePartnerLogin}></lightning-button>
+            <div class="slds-p-around_medium lgc-bg" if:true={insight.latestResults}>
+                <lightning-tile label="Latest Race Results">
+                    <p class="slds-truncate">{insight.latestResults.winner} won {insight.latestResults.race}.</p>
+                </lightning-tile>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-tile label="Championship Prediction">
+                    <dl class="slds-dl_horizontal">
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate">First:</p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate">{insight.championShipPrediction.first} {insight.championShipPrediction.firstAccuracy}</p>
+                        </dd>
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate">Second:</p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate">{insight.championShipPrediction.second} {insight.championShipPrediction.secondAccuracy}</p>
+                        </dd>
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate">Third:</p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate">{insight.championShipPrediction.third} {insight.championShipPrediction.thirdAccuracy}</p>                            
+                        </dd>
+                    </dl>
+                </lightning-tile>
+            </div>
+            <template if:true={insight.partnerStatus}>
+                <div class="slds-p-around_medium lgc-bg">
+                    <lightning-tile label="Partner Status">
+                        <dl class="slds-dl_horizontal">
+                            <dt class="slds-dl_horizontal__label">
+                                <p class="slds-truncate">Name:</p>
+                            </dt>
+                            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                <p class="slds-truncate">{insight.partnerStatus.name}</p>
+                            </dd>
+                            <dt class="slds-dl_horizontal__label">
+                                <p class="slds-truncate">Level:</p>
+                            </dt>
+                            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                <p class="slds-truncate">{insight.partnerStatus.level}</p>
+                            </dd>
+                            <dt class="slds-dl_horizontal__label">
+                                <p class="slds-truncate">Season Media Coverage:</p>
+                            </dt>
+                            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                <lightning-progress-ring value={insight.partnerStatus.seasonCoverage}> </lightning-progress-ring>
+                            </dd>
+                        </dl>
+                    </lightning-tile>
+                </div>
+            </template>
+            <p slot="footer">Brought to you by the FormulaForce application</p>
+        </lightning-card>
+    </template>
+</template>

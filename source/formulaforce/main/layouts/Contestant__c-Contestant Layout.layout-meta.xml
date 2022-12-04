@@ -83,10 +83,6 @@
                 <behavior>Edit</behavior>
                 <field>DNF__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>RetirementReason__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>

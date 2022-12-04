@@ -191,10 +191,6 @@
         <apexPage>racesummary</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
-    <pageAccesses>
-        <apexPage>racesummaryascsv</apexPage>
-        <enabled>false</enabled>
-    </pageAccesses>
     <tabSettings>
         <tab>Car__c</tab>
         <visibility>None</visibility>

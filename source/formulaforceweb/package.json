@@ -1,0 +1,35 @@
+{
+  "name": "formulaforceweb",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf __lwr_cache__",
+    "dev": "NODE_ENV=development node ./src/server/server.js",
+    "build": "node ./scripts/copy-slds.mjs",
+    "start": "node ./src/server/server.js",
+    "insert:race:predictions": "node ./scripts/insert-race-predictions.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express-session": "^1.16.2",
+    "jsforce": "^1.9.2",
+    "lwc": "2.17.0",
+    "lwr": "0.8.3",
+    "pg": "^8.8.0",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-routes-express": "^3.3.2",
+    "swagger-ui-express": "^4.6.0",
+    "lightning-base-components": "^1.14.6-alpha"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "@salesforce-ux/design-system": "^2.17.5"
+  },
+  "engines": {
+    "node": ">=14.15.4 <19",
+    "express-session": "^1.16.2",
+    "jsforce": "^1.9.2"
+  }
+}
