@@ -1,6 +1,8 @@
 public with sharing class RaceService {
 
     public static String driverCheckin(Id raceId, Id driverId) {
+		return null;
+		/**
 		// Build request for Driver Checkin Salesforce Function 
 		DriverCheckinRequest request = new DriverCheckinRequest();
 		request.raceId = raceId;
@@ -23,9 +25,12 @@ public with sharing class RaceService {
 		DriverCheckinResponse response = 
 			(DriverCheckinResponse) JSON.deserialize(invocation.getResponse(), DriverCheckinResponse.class);
 		return response.qrCodeBase64;
+		 */
 	}
 
 	public static String driverCheckIn(Id raceId, Id driverId, DriverCheckinCompleteCallaback callback) {
+		return null;
+		/**
 		// Build request for Driver Checkin Salesforce Function 
 		DriverCheckinRequest request = new DriverCheckinRequest();
 		request.raceId = raceId;
@@ -36,8 +41,11 @@ public with sharing class RaceService {
 		functions.FunctionInvocation invocation = 
 			driverCheckinFunction.invoke(JSON.serialize(request), callback);
 		return invocation.getInvocationId();			
+		 */
 	}
 
+	public virtual class DriverCheckinCompleteCallaback {}
+	/**	
 	public virtual class DriverCheckinCompleteCallaback implements functions.FunctionCallback {
 
 		// Implement standard Function callback and convert into a more specialized form for the caller
@@ -76,6 +84,7 @@ public with sharing class RaceService {
 			}
 		}
 	}
+ 	*/
 
 	public static Map<Id, List<ProvisionalResult>> calculateProvisionResults(Set<Id> raceIds) {
 		return service().calculateProvisionResults(raceIds);
@@ -88,11 +97,7 @@ public with sharing class RaceService {
 	public static void awardChampionshipPoints(Set<Id> raceIds) {
 		service().awardChampionshipPoints(raceIds);
 	}
-	
-	public static String generateSummaryAsCSV(Set<Id> raceIds) {
-		return service().generateSummaryAsCSV(raceIds);
-	}
-	
+
 	private static IRaceService service() {
 		return (IRaceService) Application.Service.newInstance(IRaceService.class);
 	}
