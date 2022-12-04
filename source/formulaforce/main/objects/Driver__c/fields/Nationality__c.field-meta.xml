@@ -9,6 +9,34 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
+                <fullName>German</fullName>
+                <default>false</default>
+            </value>
+            <value>
+                <fullName>Australian</fullName>
+                <default>false</default>
+            </value>
+            <value>
+                <fullName>Dutch</fullName>
+                <default>false</default>
+            </value>
+            <value>
+                <fullName>French</fullName>
+                <default>false</default>
+            </value>
+            <value>
+                <fullName>Russian</fullName>
+                <default>false</default>
+            </value>
+            <value>
+                <fullName>Danish</fullName>
+                <default>false</default>
+            </value>
+            <value>
+                <fullName>Swedish</fullName>
+                <default>false</default>
+            </value>
+            <value>
                 <fullName>British</fullName>
                 <default>false</default>
             </value>

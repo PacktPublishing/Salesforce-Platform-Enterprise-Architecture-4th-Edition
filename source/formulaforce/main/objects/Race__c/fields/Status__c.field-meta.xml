@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Status__c</fullName>
-    <deprecated>false</deprecated>
     <externalId>false</externalId>
     <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
         <valueSetDefinition>
@@ -11,22 +14,23 @@
             <value>
                 <fullName>Scheduled</fullName>
                 <default>true</default>
+                <label>Scheduled</label>
             </value>
             <value>
                 <fullName>In Progress</fullName>
                 <default>false</default>
+                <label>In Progress</label>
             </value>
             <value>
                 <fullName>Red Flagged</fullName>
                 <default>false</default>
+                <label>Red Flagged</label>
             </value>
             <value>
                 <fullName>Finished</fullName>
                 <default>false</default>
+                <label>Finished</label>
             </value>
         </valueSetDefinition>
     </valueSet>
-    <trackFeedHistory>false</trackFeedHistory>
-    <trackTrending>false</trackTrending>
-    <type>Picklist</type>
 </CustomField>

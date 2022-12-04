@@ -46,4 +46,33 @@ public inherited sharing class RaceServiceImpl implements IRaceService {
 						} , ',') + '\r\n';
 		return csvOutput;
 	}
+	
+    public Map<Id, Integer> addDrivers(Map<Id, List<Id>> driversByRaceId) {
+        
+        // TODO: Provide a means to determine drivers current car for the season
+        List<Car__c> cars = new CarsSelector().selectAll();
+        if(cars.size()==0) {
+            throw new RaceService.RaceServiceException('Must have at least one Car record in the system');          
+        }        
+        
+        fflib_ISObjectUnitOfWork uow = Application.UnitOfWork.newInstance();
+ 
+        // Create Contestant__c records for each Driver for the given Race
+        Map<Id, Integer> addedDriversByRace = new Map<Id, Integer>();
+        for(Id raceId : driversByRaceId.keySet()) {
+            for(Id driverId : driversByRaceId.get(raceId)) {
+                Contestant__c contestant = new Contestant__c();
+                contestant.Race__c = raceId;
+                contestant.Driver__c = driverId;
+                contestant.Car__c = cars[0].Id;
+                uow.registerNew(contestant);                
+            }
+            addedDriversByRace.put(raceId, driversByRaceId.get(raceId).size());
+        }       
+ 
+        // Commit work
+        uow.commitWork();
+        
+        return addedDriversByRace;
+    }	
 }

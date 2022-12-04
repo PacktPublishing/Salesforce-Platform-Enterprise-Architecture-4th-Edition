@@ -8,6 +8,10 @@
         <application>RaceManagement</application>
         <visible>false</visible>
     </applicationVisibilities>
+    <applicationVisibilities>
+        <application>RaceManagementLightning</application>
+        <visible>false</visible>
+    </applicationVisibilities>
     <fieldPermissions>
         <editable>false</editable>
         <field>Car__c.Weight__c</field>
@@ -70,6 +74,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contestant__c.RetirementReason__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contestant__c.Win__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Driver__c.Active__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -105,12 +119,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Race__c.EndDate__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Race__c.FastestLapBy__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Race__c.Location__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Race__c.PollPositionLapTime__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Race__c.StartDate__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -172,6 +201,18 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>complianceteam</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>flsdemo</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>outofrace</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>racesummary</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <tabSettings>

@@ -12,16 +12,20 @@
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Location__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Season__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PollPositionLapTime__c</field>
+                <behavior>Edit</behavior>
+                <field>StartDate__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>FastestLapBy__c</field>
+                <behavior>Readonly</behavior>
+                <field>PollPositionLapTime__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -35,6 +39,14 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>TotalDNFs__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>EndDate__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>FastestLapBy__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -102,40 +114,51 @@
             <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Race__c.DownloadSummary</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Race__c.DriverCheckin</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>ChangeOwnerOne</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>5</sortOrder>
+            <sortOrder>3</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>ChangeRecordType</actionName>
             <actionType>StandardButton</actionType>
+            <sortOrder>4</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Race__c.DownloadSummary</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>5</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Race__c.DriverCheckin</actionName>
+            <actionType>QuickAction</actionType>
             <sortOrder>6</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>PrintableView</actionName>
-            <actionType>StandardButton</actionType>
+            <actionName>Race__c.AddDrivers</actionName>
+            <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Race__c.GiveFeedback</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Race__c.AddDriversAura</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>9</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
         <customButtons>OutOfRace</customButtons>
         <fields>NAME</fields>
-        <fields>GridPosition__c</fields>
         <fields>DriverRace__c</fields>
+        <fields>RacePosition__c</fields>
+        <fields>ChampionshipPoints__c</fields>
         <fields>DNF__c</fields>
         <relatedList>Contestant__c.Race__c</relatedList>
-        <sortField>GridPosition__c</sortField>
-        <sortOrder>Asc</sortOrder>
+        <sortField>RacePosition__c</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -147,7 +170,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h7X000000zeps</masterLabel>
+        <masterLabel>00h7i000003YzZu</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

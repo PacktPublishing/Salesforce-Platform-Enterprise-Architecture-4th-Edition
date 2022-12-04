@@ -6,5 +6,7 @@ public interface IRaceService {
     
     void awardChampionshipPoints(Set<Id> raceIds);
     
-	String generateSummaryAsCSV(Set<Id> raceIds);    
+	String generateSummaryAsCSV(Set<Id> raceIds);
+	
+	Map<Id, Integer> addDrivers(Map<Id, List<Id>> driversByRaceId);
 }

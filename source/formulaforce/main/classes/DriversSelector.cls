@@ -24,4 +24,10 @@ public inherited sharing class DriversSelector extends ApplicationSelector {
 	               setCondition(Driver__c.Team__c + ' in :teamIds').
 	               toSOQL());
 	}
+	
+    public List<Driver__c> selectAll() {
+        return (List<Driver__c>) 
+           Database.query(
+               newQueryFactory().toSOQL());        
+    }	
 }

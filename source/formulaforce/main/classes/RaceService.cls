@@ -101,6 +101,10 @@ public with sharing class RaceService {
 	public static String generateSummaryAsCSV(Set<Id> raceIds) {
 		return service().generateSummaryAsCSV(raceIds);
 	}
+
+    public static Map<Id, Integer> addDrivers(Map<Id, List<Id>> driversByRaceId) {
+        return service().addDrivers(driversByRaceId);
+    }	
 	
 	private static IRaceService service() {
 		return (IRaceService) Application.Service.newInstance(IRaceService.class);
