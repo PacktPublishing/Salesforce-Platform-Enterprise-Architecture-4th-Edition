@@ -56,7 +56,7 @@ public inherited sharing class RacesSelector extends ApplicationSelector {
 					.setEnforceFLS(fflib_QueryFactory.FLSEnforcement.SYSTEM_MODE)
 					.setCondition('Id in :raceIds AND ' + Race__c.PollPositionLapTime__c + ' > :averageLapTimes')
 					.toSOQL());
-		return races.size()>0;				
+		return races.size()>0;			
 	}
 
 	public List<Race__c> selectAllForCurrentYear() {
