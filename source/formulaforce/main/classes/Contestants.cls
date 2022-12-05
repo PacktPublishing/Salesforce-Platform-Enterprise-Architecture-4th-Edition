@@ -21,7 +21,7 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		// Only permit new contestants to be added to Scheduled races
 		for(Contestant__c contestant : (List<Contestant__c>) Records) {
 			Race__c race = associatedRaces.get(contestant.Race__c);
-			if(!'Scheduled'.equals(race.Status__c)) {
+			if(!'Scheduled'.equals(race.Status__c) && contestant.RacePosition__c == null && contestant.DNF__c != true) {
                 contestant.addError( 'Contestants can only be added to scheduled races');			    
 			}
 		}

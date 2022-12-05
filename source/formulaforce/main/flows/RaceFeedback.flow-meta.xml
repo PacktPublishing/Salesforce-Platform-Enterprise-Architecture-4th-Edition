@@ -53,10 +53,9 @@
             <fieldType>LargeTextArea</fieldType>
             <isRequired>true</isRequired>
         </fields>
-        <!--
         <fields>
             <name>raceResults</name>
-            <extensionName>c:RaceResultsAura</extensionName>
+            <extensionName>c:raceResults</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>recordId</name>
@@ -66,7 +65,6 @@
             </inputParameters>
             <isRequired>true</isRequired>
         </fields>
-        -->
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>

@@ -34,7 +34,7 @@
                     <type>decorator</type>
                     <value>300</value>
                 </componentInstanceProperties>
-                <componentName>RaceCalendarUtility</componentName>
+                <componentName>raceCalendar</componentName>
                 <identifier>RaceCalendarUtility1</identifier>
             </componentInstance>
         </itemInstances>

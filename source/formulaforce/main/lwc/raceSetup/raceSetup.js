@@ -9,7 +9,7 @@ const columns = [
 
 export default class RaceSetup extends LightningElement {
     @api
-    raceId;
+    recordId;
     @wire(getDriverList)
     drivers;
     columns = columns;
@@ -27,7 +27,7 @@ export default class RaceSetup extends LightningElement {
             });
         // Call Apex controller methods to add drivers
         addDrivers(
-                { raceId : this.raceId, 
+                { raceId : this.recordId, 
                   driversToAdd : selectedDrivers  })
             .then(result => {
                 // Send toast confirmation to user

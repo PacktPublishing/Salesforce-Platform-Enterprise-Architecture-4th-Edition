@@ -1,3 +1,0 @@
-<aura:component implements="flexipage:availableForAllPageTypes" access="global">
-    <c:raceCalendar/>
-</aura:component>	

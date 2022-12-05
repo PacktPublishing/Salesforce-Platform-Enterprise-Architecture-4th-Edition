@@ -7,6 +7,7 @@
         <target>lightning__RecordPage</target>
         <target>lightning__AppPage</target>
         <target>lightning__HomePage</target>
+        <target>lightning__UtilityBar</target>
         <target>lightningCommunity__Page</target>        
     </targets>    
 </LightningComponentBundle>

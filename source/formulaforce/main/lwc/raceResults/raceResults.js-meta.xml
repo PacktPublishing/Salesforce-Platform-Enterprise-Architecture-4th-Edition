@@ -7,6 +7,7 @@
         <target>lightning__RecordPage</target>
         <target>lightning__AppPage</target>
         <target>lightning__HomePage</target>
+        <target>lightning__FlowScreen</target>
         <target>lightningCommunity__Page</target>
     </targets>    
     <targetConfigs>
@@ -15,5 +16,8 @@
                 <object>Race__c</object>
             </objects>
         </targetConfig>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="recordId" label="Record Id" type="String" role="inputOnly"/>
+        </targetConfig>        
     </targetConfigs>    
 </LightningComponentBundle>
