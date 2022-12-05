@@ -1,6 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 import { CurrentPageReference } from 'lightning/navigation';
-import { fireEvent } from 'c/pubsub';
+import { publish, MessageContext } from 'lightning/messageService';
+import refreshRaceResults from '@salesforce/messageChannel/RefreshRaceResults__c';
 import getRaceCalendar from '@salesforce/apex/RaceCalendarComponentController.getRaceCalendar';
 
 export default class RaceCalendar extends LightningElement {
@@ -10,6 +11,8 @@ export default class RaceCalendar extends LightningElement {
     @wire(getRaceCalendar)
     calendar;
     currentlySelectedRate;
+    @wire(MessageContext)
+    messageContext;    
 
     handleSelect(event) {
         // Determine selected Race details
@@ -22,7 +25,8 @@ export default class RaceCalendar extends LightningElement {
         }
         this.currentlySelectedRate = event.currentTarget;
         this.currentlySelectedRate.selected = true;
-        // Send raceSelected component event 
-        fireEvent(this.pageRef, 'raceSelected', { raceId: raceId, raceName: raceName });
+        // Send refreshRaceResults component message 
+        const payload = { raceId: raceId, raceName: raceName };
+        publish(this.messageContext, refreshRaceResults, payload);
     }
 }

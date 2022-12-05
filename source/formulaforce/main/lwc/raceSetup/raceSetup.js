@@ -1,5 +1,9 @@
 import { LightningElement, api, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { CloseActionScreenEvent } from 'lightning/actions';
+import { publish, MessageContext } from 'lightning/messageService';
+import refreshView from '@salesforce/messageChannel/RefreshView__c';
+
 import getDriverList from '@salesforce/apex/RaceSetupComponentController.getDriverList';
 import addDrivers from '@salesforce/apex/RaceSetupComponentController.addDriversLwc';
 
@@ -13,10 +17,12 @@ export default class RaceSetup extends LightningElement {
     @wire(getDriverList)
     drivers;
     columns = columns;
+    @wire(MessageContext)
+    messageContext;    
 
     handleCancel() {
-        // Notify the parent Aura component to send e.force:closeQuickAction
-        this.dispatchEvent(new CustomEvent('close', { detail: null }));
+        // Close modal
+        this.dispatchEvent(new CloseActionScreenEvent());
     }
     handleAddDrivers() {
         // Construct list of selected drivers
@@ -37,8 +43,10 @@ export default class RaceSetup extends LightningElement {
                         message: 'Add ' + result + ' drivers.',
                         variant: 'success',
                     }));
-                // Notify the parent Aura component to send e.force:closeQuickAction
-                this.dispatchEvent(new CustomEvent('added', { detail: result }));
+                // Close modal
+                this.dispatchEvent(new CloseActionScreenEvent());
+                // Send Refresh View message to RefreshView component (must be on page)
+                publish(this.messageContext, refreshView, {});
             })
             .catch(error => {
                 // Send toast confirmation to user

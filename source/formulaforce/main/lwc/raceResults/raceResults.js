@@ -1,6 +1,6 @@
 import { LightningElement, api, wire, track } from 'lwc';
-import { CurrentPageReference } from 'lightning/navigation';
-import { registerListener, unregisterAllListeners } from 'c/pubsub';
+import { subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext } from 'lightning/messageService';
+import refreshRaceResults from '@salesforce/messageChannel/RefreshRaceResults__c';
 import getRaceResults from '@salesforce/apex/RaceResultsComponentController.getRaceResults';
 
 const columns = [
@@ -18,8 +18,9 @@ export default class RaceResults extends LightningElement {
     recordId;
 
     // Internal properties
-    @wire(CurrentPageReference) 
-    pageRef;
+    subscription = null;
+    @wire(MessageContext)
+    messageContext;    
     @wire(getRaceResults, { raceId: '$recordId' })
     results;
     @track
@@ -34,18 +35,26 @@ export default class RaceResults extends LightningElement {
      * Listen to raceSelected component event to update the race results
      */
     connectedCallback() {
-        registerListener('raceSelected', this.handleRaceSelected, this);
+        if (!this.subscription) {
+            this.subscription = subscribe(
+                this.messageContext,
+                refreshRaceResults,
+                (message) => this.handleRaceSelected(message),
+                { scope: APPLICATION_SCOPE }
+            );
+        }
     }    
     disconnectedCallback() {
-        unregisterAllListeners(this);
+        unsubscribe(this.subscription);
+        this.subscription = null;
     }
 
     /**
      * Update the bound raceId to the @wire to refresh race details
-     * @param {} race 
+     * @param {} message 
      */
-    handleRaceSelected(race) {
-        this.recordId = race.raceId;
-        this.raceName = race.raceName;
+    handleRaceSelected(message) {
+        this.recordId = message.raceId;
+        this.raceName = message.raceName;
     }
 }
