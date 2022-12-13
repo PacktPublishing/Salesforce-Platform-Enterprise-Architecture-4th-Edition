@@ -21,7 +21,7 @@ export default class Race extends LightningElement {
         return this.completed===true ? 'action:goal' : 'action:defer';
     }
     get raceStyle() {
-        return this.selected===true ? 'slds-tile_board active' : 'slds-tile_board'
+        return this.selected===true ? 'selected' : ''
     }
 
     // Dispatch a custom event when the user clicks on a race
