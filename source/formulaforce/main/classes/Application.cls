@@ -116,7 +116,12 @@ global class Application {
             if(calloutsByInterface==null) {
                 calloutsByInterface = new CalloutsSelector().selectAllCallouts();                
             }
-            return calloutsByInterface.get(interfaceType);
+            // Confirm the given type does implement the interface
+            Type calloutImpl = calloutsByInterface.get(interfaceType);
+            if(calloutImpl.isAssignableFrom(interfaceType)) {
+                return calloutImpl.newInstance();
+            }
+            return null;
         }
     }
     

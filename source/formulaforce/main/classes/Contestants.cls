@@ -54,7 +54,7 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		// Custom implementation configured by Developer X?
 		Object registeredInterfaceImpl = 
 		    Application.Callouts.newInstance(ContestantService.IAwardChampionshipPoints.class);
-		if(registeredInterfaceImpl instanceof ContestantService.IAwardChampionshipPoints) {
+		if(registeredInterfaceImpl!=null) {
 			// Cast the interface to call the calculate method
 			ContestantService.IAwardChampionshipPoints awardChampionshipPoints = 
 				(ContestantService.IAwardChampionshipPoints) registeredInterfaceImpl;
