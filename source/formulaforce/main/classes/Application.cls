@@ -25,7 +25,6 @@ global class Application {
                     Car__c.SObjectType => CarsSelector.class,
                     Driver__c.SObjectType => DriversSelector.class,
                     Contestant__c.SObjectType => ContestantsSelector.class }); 
-                    
                                         
 	// Configure and create the DomainFactory for this Application
 	public static final fflib_Application.DomainFactory Domain = 
