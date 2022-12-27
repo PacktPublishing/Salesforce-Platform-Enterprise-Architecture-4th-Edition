@@ -18,7 +18,9 @@ public class TestData {
 		return user;
 	}
 
-	public static final String SEASONSDATA = 
+	public static String asJSON()
+	{
+		return
 			'{' +
 				'"drivers" : [ ' +
 					'{' +
@@ -50,4 +52,5 @@ public class TestData {
 					'}' +
 				']' +
 			'}';
+	}
 }

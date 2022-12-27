@@ -1,22 +1,26 @@
-public with sharing class SeasonService {
+global with sharing class SeasonService {
     
 	public static void issueNewsLetterCurrentSeason() {
-		throw new SeasonServiceException('Not implemented');
+		throw new SeasonServiceException(
+			Application.ExceptionCode.NotImplemented, Label.NotImplemented);
 	}
 	
 	public static void issueNewsLetters(Set<Id> seasonIds) {
-		throw new SeasonServiceException('Not implemented');		
+		throw new SeasonServiceException(
+			Application.ExceptionCode.NotImplemented, Label.NotImplemented);
 	}
 
 	public static void updateStandings(Set<Id> seasonIds) {
-		throw new SeasonServiceException('Not implemented');
+		throw new SeasonServiceException(
+			Application.ExceptionCode.NotImplemented, Label.NotImplemented);
 	}
 
 	public static void updateStandings(List<UpdateStandings> updateStandings) {
-		throw new SeasonServiceException('Not implemented');
+		throw new SeasonServiceException(
+			Application.ExceptionCode.NotImplemented, Label.NotImplemented);
 	}
 	
-	public static void importSeasons(String jsonData) {
+	global static void importSeasons(String jsonData) {
 		// Parse JSON data
 		System.debug(jsonData);
 		SeasonsData seasonsData = 
@@ -64,8 +68,16 @@ public with sharing class SeasonService {
 		// Insert records registered with uow above
 		uow.commitWork();
 	}	
+	
+	global static void createTestSeason() {
+		importSeasons(TestData.asJSON());		
+	}
 
-	public class SeasonServiceException extends Exception {} 
+	global class SeasonServiceException extends Application.ApplicationException {
+		public SeasonServiceException(Application.ExceptionCode exceptionCode, String message) {
+			super(exceptionCode, message);
+		}
+	} 
 
 	public class UpdateStandings {
 		public Id seasonId;

@@ -1,5 +1,4 @@
-public class Application { 
-    
+global class Application {
     
 	// Configure and create the UnitOfWorkFactory for this Application
 	public static final Application.UnitOfWorkFactory UnitOfWork = 
@@ -27,6 +26,7 @@ public class Application {
                     Driver__c.SObjectType => DriversSelector.class,
                     Contestant__c.SObjectType => ContestantsSelector.class }); 
                     
+                                        
 	// Configure and create the DomainFactory for this Application
 	public static final fflib_Application.DomainFactory Domain = 
 		new fflib_Application.DomainFactory(
@@ -38,7 +38,7 @@ public class Application {
 					Car__c.SObjectType => Cars.Constructor.class,
 					Driver__c.SObjectType => Drivers.Constructor.class,
 					Contestant__c.SObjectType => Contestants.Constructor.class });                    
-         
+
     // Customised Unit of Work factory defaults to user mode with option to revert to system mode
     public class UnitOfWorkFactory extends fflib_Application.UnitOfWorkFactory {
         public UnitOfWorkFactory(List<SObjectType> objectTypes) {
@@ -71,6 +71,9 @@ public class Application {
         }
     }
 
+    // Create an instance of the Callouts factory
+    public static final CalloutFactory Callouts = new CalloutFactory();
+           
     // Customised Service factory to support developer overrides via Custom Metadata (see Chapter 5)      
     private class ServiceFactory extends fflib_Application.ServiceFactory {
         
@@ -101,6 +104,42 @@ public class Application {
     }
 
     /**
+     * Simple factory class around the Callouts Custom Metadata type 
+     **/    
+    public class CalloutFactory {
+        
+        private Map<Type, Type> calloutsByInterface = new Map<Type, Type>();
+        
+        /**
+         * Returns the registered implementation of the given interface
+         **/
+        public Object newInstance(Type interfaceType) {
+            if(calloutsByInterface==null) {
+                calloutsByInterface = new CalloutsSelector().selectAllCallouts();                
+            }
+            return calloutsByInterface.get(interfaceType);
+        }
+    }
+    
+	global enum ExceptionCode
+	{
+		NotImplemented,
+		ComplianceFailure,
+		UnableToVerifyCompliance
+	}		
+
+	global virtual class ApplicationException extends Exception 
+	{
+		global ExceptionCode ExceptionCode {get; private set;}
+
+		public ApplicationException(ExceptionCode exceptionCode, String message)
+		{
+			this(message);
+			this.exceptionCode = exceptionCode;
+		}
+	}	 
+
+    /**
      * Utility method to throw Application exceptions to Lightning Components
      **/
     public static void throwAuraHandledException(Exception e) {
@@ -108,5 +147,5 @@ public class Application {
         AuraHandledException error = new AuraHandledException(message);
         error.setMessage(message); // Ensure Apex tests can assert the error message value
         throw error;
-    }
+    }       
 }

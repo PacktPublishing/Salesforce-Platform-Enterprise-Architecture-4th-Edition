@@ -3,7 +3,7 @@ private class ContestantServiceTest {
     	
 	@isTest static void testAwardPoints() {
 		System.runAs(TestData.raceManager()) {
-			SeasonService.importSeasons(TestData.SEASONSDATA);
+			SeasonService.importSeasons(TestData.asJSON());
 			ContestantService.awardChampionshipPoints(
 				new Map<Id, SObject>([select Id from Contestant__c]).keySet());
 		}

@@ -18,7 +18,7 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		Map<Id, Race__c> associatedRaces = 
 			new Map<Id, Race__c>(raceSelector.selectById(raceIds));
 
-		// Only permit new contestants to be added to Scheduled races
+		// Only permit new contestants to be added to Scheduled races, unless they have race position or DNF (aka historic data load)
 		for(Contestant__c contestant : (List<Contestant__c>) Records) {
 			Race__c race = associatedRaces.get(contestant.Race__c);
 			if(!'Scheduled'.equals(race.Status__c) && contestant.RacePosition__c == null && contestant.DNF__c != true) {
@@ -50,6 +50,23 @@ public inherited sharing class Contestants extends ApplicationDomain {
      * Awards the applicable championship points to the contestants
      **/
 	public void awardChampionshipPoints(fflib_ISObjectUnitOfWork uow) {
+
+		// Custom implementation configured by Developer X?
+		Object registeredInterfaceImpl = 
+		    Application.Callouts.newInstance(ContestantService.IAwardChampionshipPoints.class);
+		if(registeredInterfaceImpl instanceof ContestantService.IAwardChampionshipPoints) {
+			// Cast the interface to call the calculate method
+			ContestantService.IAwardChampionshipPoints awardChampionshipPoints = 
+				(ContestantService.IAwardChampionshipPoints) registeredInterfaceImpl;
+			// Invoke the custom method from Developer X
+			awardChampionshipPoints.calculate(Records);
+			// Mark dirty on behalf of Developer X
+			for(Contestant__c contestant : (List<Contestant__c>) Records) {
+                uow.registerDirty(contestant);			    
+			}
+			return;
+		}
+
         // Apply championship points to given contestants
         Map<Integer, ChampionshipPoint__mdt> pointsByTrackPosition = 
           new ChampionshipPointsSelector().selectAllByTrackPosition();      

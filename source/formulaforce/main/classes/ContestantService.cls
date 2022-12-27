@@ -1,4 +1,4 @@
-public with sharing class ContestantService {
+global with sharing class ContestantService {
        
 	public static void awardChampionshipPoints(Set<Id> contestantIds) {
 	    
@@ -23,5 +23,10 @@ public with sharing class ContestantService {
 	public class RaceRetirement {
 		public Id contestantId;
 		public String reason;
+	}
+		
+	global interface IAwardChampionshipPoints
+	{
+		void calculate(List<Contestant__c> contestants);
 	}	
 }
