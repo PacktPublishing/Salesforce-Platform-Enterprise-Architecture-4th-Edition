@@ -33,24 +33,20 @@ public inherited sharing class RaceServiceImpl implements IRaceService {
     }
     
 	public String generateSummaryAsCSV(Set<Id> raceIds)
-	{
+	{ 
 		// Query summaries via custom selector method
 		Map<Id, List<ContestantsSelector.Summary>> summariesByRaceId = 
 			new ContestantsSelector().selectByRaceIdWithContestantSummary(raceIds);
-		// Construct CSV output (note this is not a formal implementation of the CSV spec)
-		String csvOutput = '';
-		for(Id raceId : summariesByRaceId.keySet())
-			for(ContestantsSelector.Summary raceContestantSummary : summariesByRaceId.get(raceId))
-				csvOutput+= String.join(
-					new Object[] { 
-							raceContestantSummary.Season,
-							raceContestantSummary.Race,
-							raceContestantSummary.Position,
-							raceContestantSummary.Driver,
-							raceContestantSummary.Team,
-							raceContestantSummary.Car
-						} , ',') + '\r\n';
-		return csvOutput;
+        List<ContestantsSelector.Summary> allSummaries = new List<ContestantsSelector.Summary>();
+        for(List<ContestantsSelector.Summary> summaries : summariesByRaceId.values()) {
+            allSummaries.addAll(summaries);
+        }
+
+        // Load and run the DataWeave script to convert all the summaries to CSV
+        System.debug('Size is ' + allSummaries.size());
+        DataWeave.Script dwscript = DataWeave.Script.createScript('raceSummaryToCsv');
+        DataWeave.Result dwresult = dwscript.execute(new Map<String, Object>{'records' => allSummaries});
+		return (String) dwresult.getValue();
 	}
 	
     public Map<Id, Integer> addDrivers(Map<Id, List<Id>> driversByRaceId) {

@@ -1,7 +1,7 @@
 {
   "orgName": "FormulaForce App Development",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
+  "features": ["EnableSetPasswordInApi", "DataWeaveInApex"],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
