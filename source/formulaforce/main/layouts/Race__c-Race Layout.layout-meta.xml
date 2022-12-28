@@ -27,6 +27,10 @@
                 <behavior>Readonly</behavior>
                 <field>PollPositionLapTime__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>RaceId__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -157,7 +161,9 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>RaceData__c.Race__c</relatedList>
+        <fields>FastestLap__c</fields>
+        <fields>RaceId__c</fields>
+        <relatedList>RaceLapHistorySummary__c.Race__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

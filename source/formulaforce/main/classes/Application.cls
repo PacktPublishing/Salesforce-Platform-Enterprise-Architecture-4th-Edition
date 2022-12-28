@@ -7,7 +7,9 @@ global class Application {
 					Driver__c.SObjectType, 
 					Season__c.SObjectType, 
 				  	Race__c.SObjectType, 
-				  	Contestant__c.SObjectType });
+				  	Contestant__c.SObjectType,
+                    RaceData__c.SObjectType,
+                    RaceStatistics__c.SObjectType });
 				  	
     // Configure and create the ServiceFactory for this Application
     public static final fflib_Application.ServiceFactory Service =
@@ -24,7 +26,9 @@ global class Application {
                     Race__c.SObjectType => RacesSelector.class,
                     Car__c.SObjectType => CarsSelector.class,
                     Driver__c.SObjectType => DriversSelector.class,
-                    Contestant__c.SObjectType => ContestantsSelector.class }); 
+                    Contestant__c.SObjectType => ContestantsSelector.class,
+                    RaceData__c.SObjectType => RaceDataSelector.class,
+                    RaceStatistics__c.SObjectType => RaceStatisticsSelector.class }); 
                                         
 	// Configure and create the DomainFactory for this Application
 	public static final fflib_Application.DomainFactory Domain = 

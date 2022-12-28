@@ -45,6 +45,27 @@ public inherited sharing class Contestants extends ApplicationDomain {
             }
 		}
 	}
+	
+	/** 
+	 * Calculate the Contestants RaceDataId__c
+	 **/
+	public override void onBeforeInsert() {
+		// Query Drivers related to Contestant records
+		Map<Id, Driver__c> driversById = 
+			new Map<Id, Driver__c>((List<Driver__c>)
+				Application.Selector.selectByRelationship(
+					Records, Contestant__c.Driver__c));
+
+		// Query Races related to Contestant records
+		Map<Id, Race__c> racesById = queryAssociatedRaces(Records);
+
+		// Calculate each unique Contestants Race Data Id
+		for(Contestant__c contestant : (List<Contestant__c>) Records) {		
+			Race__c race = racesById.get(contestant.Race__c);
+			Driver__c driver = driversById.get(contestant.Driver__c);
+			contestant.RaceDataId__c = makeRaceDataId(race.Year__c, race.Name, driver.DriverId__c); 
+		}		
+	}
 
     /**
      * Awards the applicable championship points to the contestants
@@ -95,5 +116,13 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		public fflib_SObjectDomain construct(List<SObject> sObjectList) {
 			return new Contestants(sObjectList);
 		}
-	}	
+	}
+
+	public static String makeRaceDataId(Decimal year, String raceName, String driverId) {
+		return makeRaceDataId(String.valueOf(year), raceName, driverId);
+	}
+
+	public static String makeRaceDataId(String year, String raceName, String driverId) {
+		return year+'-'+raceName+'-'+driverId;
+	}
 }

@@ -10,4 +10,6 @@
     <tabs>Season__c</tabs>
     <tabs>Race__c</tabs>
     <tabs>RaceData__c</tabs>
+    <tabs>RaceLapHistorySummary__c</tabs>
+    <tabs>RaceStatistics__c</tabs>
 </CustomApplication>

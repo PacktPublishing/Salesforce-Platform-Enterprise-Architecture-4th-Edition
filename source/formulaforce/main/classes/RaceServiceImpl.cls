@@ -77,4 +77,111 @@ public inherited sharing class RaceServiceImpl implements IRaceService {
         
         return addedDriversByRace;
     }	
+    
+	public Id runProcessDataJob()
+	{
+		// TODO: Implement concurrency check and scope config (via custom setting)
+		return Database.executeBatch(new ProcessRaceDataJob(), 2000);	
+	}    
+    
+	public void processData(Set<Id> raceDataIds)
+	{
+		// Query Race Data records and update with Contestant relationship
+		fflib_ISObjectUnitOfWork uow = Application.UnitOfWork.newInstance();
+		for(RaceData__c raceData : 
+				(List<RaceData__c>)
+					Application.Selector.selectById(raceDataIds))
+		{
+			// Associate Race Data record with a Contestant via Unique Id
+			raceData.Contestant__r = 
+				new Contestant__c(
+					RaceDataId__c = 
+						Contestants.makeRaceDataId(
+							raceData.Year__c, 
+							raceData.RaceName__c, 
+							raceData.DriverId__c));
+			uow.registerDirty(raceData);
+		}
+		// Update records
+		uow.commitWork();
+	}
+        
+	public List<RaceService.AnalysisResult> analizeData(Set<String> raceNames)
+	{
+		// Sample code to illustrate unbounded queries in Chatper 11
+		List<RaceData__c> raceData = 
+			RaceDataSelector.newInstance().selectByRaceName(raceNames);			
+		return null;
+	}
+
+	/**
+	 * Optimally ingests raw external telemetry for the currently active race
+	 */
+    public void ingestTelemetry(List<RaceService.Telemetry> telemetry) {
+		Integer currentYear = 2019; // Hard coded for this sample code Chapter 11
+		String currentRaceName = 'Spain'; // Hard coded for this sample code Chapter 11
+		fflib_ISObjectUnitOfWork uow = Application.UnitOfWork.newInstance();
+		for(RaceService.Telemetry incommingData : telemetry) {
+			RaceData__c raceData = new RaceData__c();
+			raceData.Year__c = currentYear;
+			raceData.RaceName__c = currentRaceName;
+			raceData.DriverId__c = incommingData.DriverId;
+			raceData.Lap__c = incommingData.Lap;
+			raceData.Sector__c = incommingData.Sector;
+			raceData.Type__c = incommingData.Type;
+			raceData.Value__c = incommingData.Value;
+			raceData.Contestant__r = 
+				new Contestant__c(
+					RaceDataId__c = 
+						Contestants.makeRaceDataId(
+							raceData.Year__c, 
+							raceData.RaceName__c, 
+							raceData.DriverId__c));
+			uow.registerNew(raceData);
+		}	
+		uow.commitWork();	
+	}
+
+	/**
+	 * Updates various persistant stats based on telemetry for known contestants
+	*/
+	public void processTelemetry(List<RaceService.ContestantResolvedTelemetry> telemetry) {
+
+		// Query contestants to obtain their related races
+		Set<Id> contestantIds = new Set<Id>();
+		for(RaceService.ContestantResolvedTelemetry event : telemetry) {
+			contestantIds.add(event.ContestantId);
+		}
+		Map<Id,Id> racesByContestantId = new Map<Id,Id>();
+		for(Contestant__c contestant : new ContestantsSelector().selectById(contestantIds)) {
+			racesByContestantId.put(contestant.Id, contestant.Race__c);
+		}
+		// Query the current Race Statistics
+		Map<Id, RaceStatistics__c> statsByRaceId = new Map<Id, RaceStatistics__c>();
+		for(RaceStatistics__c stat : new RaceStatisticsSelector().selectByRaceId( new Set<Id>(racesByContestantId.values()))) {
+			statsByRaceId.put(stat.Race__c, stat);
+		}
+
+		// Adjust stats accordingly
+		fflib_ISObjectUnitOfWork uow = Application.UnitOfWork.newInstance();		
+		for(RaceService.ContestantResolvedTelemetry event : telemetry) {
+			Id raceId = racesByContestantId.get(event.ContestantId);
+			RaceStatistics__c stat = statsByRaceId.get(raceId);
+			if(stat==null) {
+				stat = new RaceStatistics__c();
+				stat.Race__c = raceId;
+			}
+			// New fastest sector time?
+			if(event.Type == 'Sector Time') {
+				Decimal currentSectorTime = (Decimal) stat.get('FastestSector'+event.Sector+'TimeMilliseconds__c');
+				if(currentSectorTime == null || event.Value < currentSectorTime) {
+					stat.put('FastestSector'+event.Sector+'TimeMilliseconds__c', event.Value);
+					stat.put('FastestSector'+event.Sector+'Time__c', String.valueOf(Time.newInstance(0,0,0,Integer.valueOf(event.Value))));
+					stat.put('FastestSector'+event.Sector+'Driver__c', ''+event.ContestantId);
+					uow.registerUpsert(stat);
+				}
+			}
+		}
+		uow.commitWork();
+	}
 }

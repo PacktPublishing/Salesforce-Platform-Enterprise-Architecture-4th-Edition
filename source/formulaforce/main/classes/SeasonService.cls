@@ -37,6 +37,8 @@ global with sharing class SeasonService {
 				DriverId__c = driverData.driverId,
 				Nationality__c = driverData.nationality,
 				TwitterHandle__c = driverData.twitterHandle);
+            if(driverData.fiaSuperLicense!=null)
+                driver.FIASuperLicense__c = driverData.fiaSuperLicense;				
 			uow.registerNew(driver);
 			driversById.put(driver.DriverId__c, driver);
 		}
@@ -94,8 +96,8 @@ global with sharing class SeasonService {
 		public String name;
 		public String nationality;
 		public String driverId;		
-		public String twitterHandle;		
-
+		public String twitterHandle;	
+        public Boolean fiaSuperLicense;     			
 	}
 
 	public class SeasonData {

@@ -5,7 +5,8 @@ public inherited sharing class DriversSelector extends ApplicationSelector {
 			Driver__c.Id,
 			Driver__c.Name,
 			Driver__c.FIASuperLicense__c,
-			Driver__c.Team__c
+			Driver__c.Team__c,
+			Driver__c.DriverId__c
 		};
 	}
 
@@ -16,18 +17,18 @@ public inherited sharing class DriversSelector extends ApplicationSelector {
 	public List<Driver__c> selectById(Set<Id> ids) {
 		return (List<Driver__c>) super.selectSObjectsById(ids);
 	}
-
+    
 	public List<Driver__c> selectByTeam(Set<Id> teamIds) {
 	    return (List<Driver__c>) 
 	       Database.query(
 	           newQueryFactory().
-	               setCondition(Driver__c.Team__c + ' in :teamIds').
+	               setCondition('Team__c in :teamIds').
 	               toSOQL());
 	}
-	
+
     public List<Driver__c> selectAll() {
         return (List<Driver__c>) 
            Database.query(
                newQueryFactory().toSOQL());        
-    }	
+    }
 }

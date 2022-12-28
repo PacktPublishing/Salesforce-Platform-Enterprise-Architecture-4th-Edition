@@ -1,4 +1,4 @@
-public inherited sharing class RacesSelector extends ApplicationSelector {
+public class RacesSelector extends ApplicationSelector {
     
 	public RacesSelector() {
 		super();
@@ -25,7 +25,9 @@ public inherited sharing class RacesSelector extends ApplicationSelector {
 			Race__c.PollPositionLapTime__c,
 			Race__c.TotalDNFs__c,
 			Race__c.StartDate__c,
-			Race__c.EndDate__c
+			Race__c.EndDate__c,
+			Race__c.Year__c,
+			Race__c.RaceId__c
 		};
 	}
 
@@ -48,20 +50,22 @@ public inherited sharing class RacesSelector extends ApplicationSelector {
         return (List<Race__c>) Database.query(
             racesQueryFactory.setCondition('Id in :raceIds').toSOQL());
 	}
-
-	public Boolean aboveAverageLapTimes(Set<Id> raceIds, Integer averageLapTimes) {
-		List<Race__c> races = (List<Race__c>) 
-			Database.query(
-				newQueryFactory()
-					.setEnforceFLS(fflib_QueryFactory.FLSEnforcement.SYSTEM_MODE)
-					.setCondition('Id in :raceIds AND ' + Race__c.PollPositionLapTime__c + ' > :averageLapTimes')
-					.toSOQL());
-		return races.size()>0;			
-	}
-
+	
 	public List<Race__c> selectAllForCurrentYear() {
         String currentYear = '2016'; // Hard coded to match sample data included in Chatper 9
         return (List<Race__c>) Database.query(
             newQueryFactory().setCondition('Season__r.Name = :currentYear').toSOQL());
+	}
+
+	public Map<String, Race__c> selectByExternalRaceIds(Set<String> raceExternalIds) {
+		List<Race__c> races = (List<Race__c>) 
+			Database.query(newQueryFactory()
+				.setCondition('RaceId__c in :raceExternalIds')
+				.toSOQL());
+		Map<String, Race__c> racesByExternalId = new Map<String, Race__c>();
+		for(Race__c race : races) {
+			racesByExternalId.put(race.RaceId__c, race);
+		}
+		return racesByExternalId;
 	}
 }
