@@ -1,15 +1,15 @@
 {
   "packageDirectories": [
     {
-      "path": "sfdx-source/fflib-apex-mocks",
+      "path": "source/fflib-apex-mocks",
       "default": false
     },
     {
-      "path": "sfdx-source/fflib-apex-common",
+      "path": "source/fflib-apex-common",
       "default": false
     },
     {
-      "path": "sfdx-source/formulaforce",
+      "path": "source/formulaforce",
       "default": true
     }
   ],
