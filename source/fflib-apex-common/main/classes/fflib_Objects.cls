@@ -27,6 +27,11 @@ public virtual class fflib_Objects implements fflib_IObjects
 {
 	protected List<Object> objects { get; private set;} { objects = new List<Object>(); }
 
+    /**
+     * Constructor required for Test.createStub
+     **/
+    public fflib_Objects() { }
+
 	/**
 	 * Class constructor
 	 */

@@ -27,6 +27,12 @@ public virtual class fflib_SObjects
 		extends fflib_Objects
 		implements fflib_ISObjects
 {
+    /**
+     * Constructor required for Test.createStub
+     **/
+    public fflib_SObjects() {        
+        super();
+    }
 
 	public Schema.DescribeSObjectResult SObjectDescribe {get; private set;}
 

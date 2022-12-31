@@ -1,4 +1,11 @@
 public inherited sharing class Contestants extends ApplicationDomain {
+	
+    /**
+     * Constructor required for Test.createStub
+     **/
+    public Contestants() {
+        super();
+    }
 
 	public Contestants(List<Contestant__c> contestants) {
 		super(contestants);

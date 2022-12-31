@@ -42,6 +42,13 @@ public virtual with sharing class fflib_SObjectDomain
 		extends fflib_SObjects
 	implements fflib_ISObjectDomain
 {
+    /**
+     * Constructor required for Test.createStub
+     **/
+    public fflib_SObjectDomain() {        
+        super();
+    }
+
 	/**
 	 * Provides access to the data represented by this domain class
 	 **/

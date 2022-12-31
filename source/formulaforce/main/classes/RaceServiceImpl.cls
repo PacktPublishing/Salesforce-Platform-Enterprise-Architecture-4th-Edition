@@ -14,16 +14,17 @@ public inherited sharing class RaceServiceImpl implements IRaceService {
         fflib_ISObjectUnitOfWork uow = Application.UnitOfWork.newInstance(AccessLevel.SYSTEM_MODE);
 
         // Query Races and contestants and bulkify list of all contestants
-        List<Contestant__c> contestants = new List<Contestant__c>();
-        for(Race__c race : new RacesSelector().selectByIdWithContestants(raceIds)) {
-            contestants.addAll(race.Contestants__r);            
-        }
+        List<Contestant__c> contestantsList = new List<Contestant__c>();
+		RacesSelector racesSelector = (RacesSelector) Application.Selector.newInstance(Race__c.SObjectType);    
+        for(Race__c race : racesSelector.selectByIdWithContestants(raceIds)) {
+            contestantsList.addAll(race.Contestants__r);      
+		}
         
         // Delegate to Contestant Domain class
-        new Contestants(contestants).awardChampionshipPoints(uow);
+        Contestants contestants = (Contestants) Application.Domain.newInstance(contestantsList);
 
         // Send event notifying the press that the results are published
-        uow.registerNew(
+        uow.registerPublishBeforeTransaction(
             new RaceNewsFeed__e(
                 Category__c = 'Race News', 
                 Content__c = 'Championship points have been officially calculated'));

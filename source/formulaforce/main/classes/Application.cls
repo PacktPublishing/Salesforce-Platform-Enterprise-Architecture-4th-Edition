@@ -9,13 +9,14 @@ global class Application {
 				  	Race__c.SObjectType, 
 				  	Contestant__c.SObjectType,
                     RaceData__c.SObjectType,
-                    RaceStatistics__c.SObjectType });
+                    RaceStatistics__c.SObjectType,
+                    RaceNewsFeed__e.SObjectType });
 				  	
     // Configure and create the ServiceFactory for this Application
     public static final fflib_Application.ServiceFactory Service =
         new Application.ServiceFactory( 
             new Map<Type, Type> {
-                    IRaceService.class => RaceServiceImpl.class });
+                    RaceService.class => RaceServiceImpl.class });
                     
     // Configure and create the SelectorFactory for this Application
     public static final fflib_Application.SelectorFactory Selector = 

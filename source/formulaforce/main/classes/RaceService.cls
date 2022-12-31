@@ -127,7 +127,7 @@ public with sharing class RaceService {
 	}
 	
 	private static IRaceService service() {
-		return (IRaceService) Application.Service.newInstance(IRaceService.class);
+		return (IRaceService) Application.Service.newInstance(RaceService.class);
 	}
 
 	public class RaceServiceException extends Exception {} 	
