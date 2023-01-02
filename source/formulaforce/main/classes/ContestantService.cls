@@ -29,8 +29,6 @@ public with sharing class ContestantService {
 		throw new ContestantServiceException('Not implemented');
 	}
 
-	public class ContestantServiceException extends Exception {} 
-
 	public class RaceRetirement {
 		public Id contestantId;
 		public String reason;
