@@ -1,3 +1,4 @@
+@isTest
 public class TestData {
     
 	public static final String SEASONSDATA = 

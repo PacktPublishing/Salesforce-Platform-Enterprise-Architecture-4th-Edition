@@ -64,27 +64,32 @@ private class ContestantsTest
 	}
 
 	@IsTest
-	private static void testAddChampionshipPoints()
-	{
-		// Test data
-		Season__c season = new Season__c(Name = '2014', Year__c = '2014');
-		insert season;
-		Driver__c driver = new Driver__c(Name = 'Lewis Hamilton', DriverId__c = '42');
-		insert driver;
-		Race__c race = new Race__c(Name = 'Spa', Status__c  = 'Scheduled', Season__c = season.Id);
-		insert race;
-		Contestant__c contestant = new Contestant__c(Driver__c = driver.Id, Race__c = race.Id);
-		insert contestant;
-		race.Status__c = 'Finished';
-		update race;
-		contestant.RacePosition__c = 1;
-		update contestant;
+	private static void testAddChampionshipPoints() {
+	    System.runAs(TestUser.raceManager()) {
+			// Test data
+			Season__c season = new Season__c(Name = '2014', Year__c = '2014');
+			insert season;
+			Driver__c driver = new Driver__c(Name = 'Lewis Hamilton', DriverId__c = '42');
+			insert driver;
+			Race__c race = new Race__c(Name = 'Spa', Status__c  = 'Scheduled', Season__c = season.Id);
+			insert race;
+			Contestant__c contestant = new Contestant__c(Driver__c = driver.Id, Race__c = race.Id);
+			insert contestant;
+			System.debug(contestant);
+			race.Status__c = 'Finished';
+			update race;
 
-		Test.startTest();
-		Contestants contestants = new Contestants(new List<Contestant__c> { contestant });
-		contestants.awardChampionshipPoints(Application.UnitOfWork.newInstance());
-		System.assertEquals(25, ((Contestant__c) contestants.Records[0]).ChampionshipPoints__c);
-		Test.stopTest();
+			contestant = [SELECT Id, Name, Driver__c, Race__c, RacePosition__c FROM Contestant__c WHERE Id = :contestant.Id];
+			contestant.RacePosition__c = 1;
+			System.debug(contestant);
+			update contestant;
+
+			Test.startTest();
+			Contestants contestants = new Contestants(new List<Contestant__c> { contestant });
+			contestants.awardChampionshipPoints(Application.UnitOfWork.newInstance());
+			System.assertEquals(25, ((Contestant__c) contestants.Records[0]).ChampionshipPoints__c);
+			Test.stopTest();
+		}
 	}
 
 	@IsTest

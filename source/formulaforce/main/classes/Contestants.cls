@@ -68,8 +68,9 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		Set<Id> raceIds = new Set<Id>();
 		for(Contestant__c contestant : contestants) {
             raceIds.add(contestant.Race__c);		    
-		}			
-		return new Map<Id, Race__c>((List<Race__c>)Application.Selector.selectById(raceIds));		
+		}
+		System.debug(raceIds);
+		return raceIds.isEmpty() ? new Map<Id, Race__c>() : new Map<Id, Race__c>((List<Race__c>)Application.Selector.selectById(raceIds));		
 	}
 
 	public class Constructor implements fflib_SObjectDomain.IConstructable {

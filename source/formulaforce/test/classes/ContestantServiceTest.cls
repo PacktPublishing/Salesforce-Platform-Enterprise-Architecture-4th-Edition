@@ -2,10 +2,11 @@
 private class ContestantServiceTest {
     	
 	@isTest static void testAwardPoints() {
-	    
-		SeasonService.importSeasons(TestData.SEASONSDATA);
-		ContestantService.awardChampionshipPoints(
-			new Map<Id, SObject>([select Id from Contestant__c]).keySet());
+	    System.runAs(TestUser.raceManager()) {
+			SeasonService.importSeasons(TestData.SEASONSDATA);
+			ContestantService.awardChampionshipPoints(
+				new Map<Id, SObject>([select Id from Contestant__c]).keySet());
+		}
 	}
 
 	@isTest static void testTemporary() {
