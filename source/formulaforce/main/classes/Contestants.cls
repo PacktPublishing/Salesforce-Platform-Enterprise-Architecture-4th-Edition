@@ -69,7 +69,6 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		for(Contestant__c contestant : contestants) {
             raceIds.add(contestant.Race__c);		    
 		}
-		System.debug(raceIds);
 		return raceIds.isEmpty() ? new Map<Id, Race__c>() : new Map<Id, Race__c>((List<Race__c>)Application.Selector.selectById(raceIds));		
 	}
 
