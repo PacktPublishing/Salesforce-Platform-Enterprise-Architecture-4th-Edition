@@ -78,7 +78,6 @@ private class ContestantsTest
 			race.Status__c = 'Finished';
 			update race;
 
-			contestant = [SELECT Id, Name, Driver__c, Race__c, RacePosition__c FROM Contestant__c WHERE Id = :contestant.Id];
 			contestant.RacePosition__c = 1;
 			update contestant;
 
