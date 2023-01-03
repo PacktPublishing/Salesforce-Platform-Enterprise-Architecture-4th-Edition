@@ -748,13 +748,6 @@ public class fflib_QueryFactory { //No explicit sharing declaration - inherit fr
 			result += ' WITH SYSTEM_MODE';
 		}
 
-		if(mFlsEnforcement == FLSEnforcement.USER_MODE){
-			result += ' WITH USER_MODE';
-		}
-		if(mFlsEnforcement == FLSEnforcement.SYSTEM_MODE){
-			result += ' WITH SYSTEM_MODE';
-		}
-	
 		if(order.size() > 0){
 			result += ' ORDER BY ';
 			for(Ordering o:order)
