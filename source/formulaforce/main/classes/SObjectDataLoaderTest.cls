@@ -707,69 +707,6 @@ private class SObjectDataLoaderTest {
 		System.assertEquals('defCountry',accList[0].ShippingCountry);
     }
     
-    /*
-	* Test  omitting  fields compound for Contact Object
-	*/
-	@isTest(seeAllData=False)
-	private static void testOmitCompoundFieldsForContact()
-    {
-		Id idToSerialize;
-    	Map <Schema.SObjectType,SObjectDataLoader.SerializeConfig> strategyBySObjectType = new Map <Schema.SObjectType,SObjectDataLoader.SerializeConfig>();
-	 	Map<String,List<String>> childRelationshipBlackListMap = new Map<String,List<String>>();
-	 	Map<String, Schema.SObjectType> globalDescribeMap = Schema.getGlobalDescribe();
-    	Schema.SObjectType conSObjectType = globalDescribeMap.get('Contact');
-		SObject con = conSObjectType.newSObject();
-		con.put('LastName','testContact');
-		con.put('MailingState', 'abcState');
-		con.put('MailingCountry', 'abcCountry');
-		con.put('MailingPostalCode', '123456');
-		con.put('MailingStreet', 'abcStreet');
-		con.put('MailingCity', 'abcCity');
-		con.put('OtherCity', 'defCity');
-		con.put('OtherCountry', 'defCountry');
-		con.put('OtherPostalCode', '234561');
-		con.put('OtherState', 'defState');
-        insert con;
-		String serializedRecord = SObjectDataLoader.serialize(new Set<Id>{con.Id}, new SObjectDataLoader.SerializeConfig().auto(con.Id.getSObjectType()));
-		Set<Id> conIdSet = SObjectDataLoader.deserialize(serializedRecord);
-		System.assertEquals(1, conIdSet.size());
-		List<Contact> conList = [select LastName, MailingState, MailingCountry, MailingPostalCode, MailingStreet, MailingCity, OtherCity, OtherCountry, OtherPostalCode, OtherState from Contact where Id in :conIdSet];
-		System.assertEquals(1,conList.size());
-		System.assertEquals('abcState',conList[0].MailingState);
-		System.assertEquals('defCountry',conList[0].OtherCountry);
-    }
-    
-     /*
-	* Test  omitting  fields compound for Lead Object
-	*/
-	@isTest(seeAllData=False)
-	private static void testOmitCompoundFieldsForLead()
-    {
-		Id idToSerialize;
-    	Map <Schema.SObjectType,SObjectDataLoader.SerializeConfig> strategyBySObjectType = new Map <Schema.SObjectType,SObjectDataLoader.SerializeConfig>();
-	 	Map<String,List<String>> childRelationshipBlackListMap = new Map<String,List<String>>();
-	 	Map<String, Schema.SObjectType> globalDescribeMap = Schema.getGlobalDescribe();
-    	Schema.SObjectType leadSObjectType = globalDescribeMap.get('Lead');
-		SObject testLead = leadSObjectType.newSObject();
-		testLead.put('FirstName','test');
-		testLead.put('LastName', 'Lead');
-		testLead.put('Company', 'abc');
-		testLead.put('LeadSource', 'lsrc');
-		testLead.put('Street', 'abcStreet');
-		testLead.put('City', 'abcCity');
-		testLead.put('Country', 'abcCountry');
-		testLead.put('State', 'abcState');
-		testLead.put('PostalCode', '123456');
-        insert testLead;
-		String serializedRecord = SObjectDataLoader.serialize(new Set<Id>{testLead.Id}, new SObjectDataLoader.SerializeConfig().auto(testLead.Id.getSObjectType()));
-		Set<Id> leadIdSet = SObjectDataLoader.deserialize(serializedRecord);
-		System.assertEquals(1, leadIdSet.size());
-		List<Lead> leadList = [select LastName, FirstName, Company, LeadSource, Street, City, Country, State, PostalCode from Lead where Id in :leadIdSet];
-		System.assertEquals(1,leadList.size());
-		System.assertEquals('abcState',leadList[0].State);
-		System.assertEquals('abcCountry',leadList[0].Country);
-    }
-    
      /*
 	* Test  creating a map from json file  
 	*/

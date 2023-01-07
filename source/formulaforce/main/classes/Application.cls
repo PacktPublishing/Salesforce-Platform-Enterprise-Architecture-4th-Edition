@@ -123,7 +123,7 @@ global class Application {
             }
             // Confirm the given type does implement the interface
             Type calloutImpl = calloutsByInterface.get(interfaceType);
-            if(calloutImpl.isAssignableFrom(interfaceType)) {
+            if(calloutImpl!=null && calloutImpl.isAssignableFrom(interfaceType)) {
                 return calloutImpl.newInstance();
             }
             return null;
