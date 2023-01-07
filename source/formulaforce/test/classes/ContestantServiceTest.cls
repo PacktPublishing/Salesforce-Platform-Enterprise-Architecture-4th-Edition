@@ -1,0 +1,20 @@
+@isTest
+private class ContestantServiceTest {
+    	
+	@isTest static void testAwardPoints() {
+	    System.runAs(TestUser.raceManager()) {
+			SeasonService.importSeasons(TestData.SEASONSDATA);
+			ContestantService.awardChampionshipPoints(
+				new Map<Id, SObject>([select Id from Contestant__c]).keySet());
+		}
+	}
+
+	@isTest static void testTemporary() {
+		try {
+			ContestantService.retireFromRace(null);
+			System.assert(false);
+		} catch (Exception e) {
+			System.assertEquals('Not implemented', e.getMessage());
+		}
+	}
+}
