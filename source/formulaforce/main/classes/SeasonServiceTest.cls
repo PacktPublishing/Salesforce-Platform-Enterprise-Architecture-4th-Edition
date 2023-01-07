@@ -19,21 +19,4 @@ private class SeasonServiceTest {
 			System.assertEquals(1, Database.countQuery('select count() from Contestant__c'));
 		}
 	}	
-
-	@isTest static void testTemporary()	{
-		System.runAs(TestData.raceManager()) {	
-			try {
-				SeasonService.updateStandings(new Set<Id> { });
-				System.assert(false);
-			} catch (Exception e) {
-				System.assertEquals('Not implemented', e.getMessage());
-			}
-			try {
-				SeasonService.updateStandings(new List<SeasonService.UpdateStandings> { });
-				System.assert(false);
-			} catch (Exception e) {
-				System.assertEquals('Not implemented', e.getMessage());
-			}
-		}
-	}
 }

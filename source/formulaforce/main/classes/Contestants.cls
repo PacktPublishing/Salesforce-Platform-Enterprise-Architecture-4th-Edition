@@ -35,6 +35,9 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		List<Contestant__c> changedDrivers = 
 			getChangedRecords(
 				new Set<SObjectField> { Contestant__c.Driver__c });
+       if(changedDrivers.size()==0) {
+           return;
+       }
 		// Bulk load the associated races
 		Map<Id, Race__c> associatedRaces = queryAssociatedRaces(changedDrivers);
 		// Can only change drivers in scheduled races

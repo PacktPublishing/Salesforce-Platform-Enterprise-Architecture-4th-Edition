@@ -10,15 +10,9 @@ global with sharing class SeasonService {
 			Application.ExceptionCode.NotImplemented, Label.NotImplemented);
 	}
 
-	public static void updateStandings(Set<Id> seasonIds) {
-		throw new SeasonServiceException(
-			Application.ExceptionCode.NotImplemented, Label.NotImplemented);
-	}
+	public static void updateStandings(Set<Id> seasonIds) { }
 
-	public static void updateStandings(List<UpdateStandings> updateStandings) {
-		throw new SeasonServiceException(
-			Application.ExceptionCode.NotImplemented, Label.NotImplemented);
-	}
+	public static void updateStandings(List<UpdateStandings> updateStandings) { }
 	
 	global static void importSeasons(String jsonData) {
 		// Parse JSON data
