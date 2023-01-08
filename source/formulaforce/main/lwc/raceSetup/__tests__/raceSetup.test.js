@@ -48,8 +48,8 @@ describe('c-raceSetup', () => {
         });
 
         // Then
-        getDriverListAdapter.emit(mockGetDriverList);
         document.body.appendChild(element);
+        getDriverListAdapter.emit(mockGetDriverList);
 
         // When 
         return Promise.resolve().then(() => {
