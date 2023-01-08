@@ -29,6 +29,14 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+<<<<<<< HEAD
+=======
+        <editable>false</editable>
+        <field>Contestant__c.DriverRace__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+>>>>>>> chapter-07
         <editable>true</editable>
         <field>Contestant__c.Driver__c</field>
         <readable>true</readable>
@@ -57,6 +65,7 @@
         <editable>true</editable>
         <field>Contestant__c.RacePosition__c</field>
         <readable>true</readable>
+<<<<<<< HEAD
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -68,6 +77,14 @@
         <field>Contestant__c.DriverRace__c</field>
         <readable>true</readable>
     </fieldPermissions>    
+=======
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Contestant__c.RaceTime__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+>>>>>>> chapter-07
     <fieldPermissions>
         <editable>true</editable>
         <field>Driver__c.Active__c</field>

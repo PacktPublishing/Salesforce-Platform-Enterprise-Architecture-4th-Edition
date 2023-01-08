@@ -1,0 +1,1 @@
+public class SeasonServiceException extends Exception {} 
