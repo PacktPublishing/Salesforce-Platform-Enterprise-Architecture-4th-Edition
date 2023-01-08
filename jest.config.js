@@ -1,8 +1,10 @@
-const { jestConfig } = require('@salesforce/lwc-jest/config');
+const { jestConfig } = require('@salesforce/sfdx-lwc-jest/config');
 module.exports = {
     ...jestConfig,
     moduleNameMapper: {
         '^lightning/platformShowToastEvent$':
-            '<rootDir>/force-app/test/jest-mocks/lightning/platformShowToastEvent'
+            '<rootDir>/source/formulaforce/test/jest-mocks/lightning/platformShowToastEvent',
+        '^lightning/actions$':
+            '<rootDir>/source/formulaforce/test/jest-mocks/lightning/actions'
     }
 };

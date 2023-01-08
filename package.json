@@ -1,0 +1,25 @@
+{
+  "name": "salesforce-platform-enterprise-architecture-4th-edition",
+  "version": "1.0.0",
+  "description": "Salesforce Platform Enterprise Architecture - Fourth Edition ============================================================",
+  "main": "jest.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:unit": "sfdx-lwc-jest",
+    "test:unit:debug": "sfdx-lwc-jest --debug",
+    "test:unit:watch": "sfdx-lwc-jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PacktPublishing/Salesforce-Platform-Enterprise-Architecture-4th-Edition.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PacktPublishing/Salesforce-Platform-Enterprise-Architecture-4th-Edition/issues"
+  },
+  "homepage": "https://github.com/PacktPublishing/Salesforce-Platform-Enterprise-Architecture-4th-Edition#readme",
+  "devDependencies": {
+    "@salesforce/sfdx-lwc-jest": "^1.2.1"
+  }
+}

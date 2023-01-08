@@ -1,7 +1,7 @@
 // raceSetup.test.js
 import { createElement } from 'lwc';
 import RaceSetup from 'c/raceSetup';
-import { registerApexTestWireAdapter } from '@salesforce/lwc-jest';
+import { createApexTestWireAdapter } from '@salesforce/sfdx-lwc-jest';
 import getDriverList from '@salesforce/apex/RaceSetupComponentController.getDriverList';
 import addDrivers from '@salesforce/apex/RaceSetupComponentController.addDriversLwc';
 import { ShowToastEventName } from 'lightning/platformShowToastEvent';
@@ -21,7 +21,7 @@ jest.mock(
 );
 
 // Register as Apex wire adapter. Some tests verify that provisioned values trigger desired behavior.
-const getDriverListAdapter = registerApexTestWireAdapter(getDriverList);
+const getDriverListAdapter = createApexTestWireAdapter(getDriverList);
 
 describe('c-raceSetup', () => {
 
@@ -48,8 +48,8 @@ describe('c-raceSetup', () => {
         });
 
         // Then
-        document.body.appendChild(element);
         getDriverListAdapter.emit(mockGetDriverList);
+        document.body.appendChild(element);
 
         // When 
         return Promise.resolve().then(() => {
