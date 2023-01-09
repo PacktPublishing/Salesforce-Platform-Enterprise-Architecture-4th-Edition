@@ -107,8 +107,6 @@ describe('c-raceSetup', () => {
 
         // Then
         document.body.appendChild(element);
-        getDriverList.emit(mockGetDriverList);
-        await flushPromises();
         const tableEl = element.shadowRoot.querySelector('lightning-datatable');
         tableEl.getSelectedRows = jest.fn().mockReturnValue(SELECTED_ROWS);
 
@@ -154,8 +152,6 @@ describe('c-raceSetup', () => {
 
         // Then
         document.body.appendChild(element);
-        getDriverList.emit(mockGetDriverList);
-        await flushPromises(); 
         const tableEl = element.shadowRoot.querySelector('lightning-datatable');            
         tableEl.getSelectedRows = jest.fn().mockReturnValue(SELECTED_ROWS);
 

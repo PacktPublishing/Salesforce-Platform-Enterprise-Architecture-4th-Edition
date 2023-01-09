@@ -1,8 +1,6 @@
 <template>
     <lightning-quick-action-panel header="Add Drivers">
-        <template if:true={drivers.data}>
-            <lightning-datatable key-field="RecordId" data={drivers.data} columns={columns}></lightning-datatable>    
-        </template>
+        <lightning-datatable key-field="RecordId" data={drivers.data} columns={columns}></lightning-datatable>    
         <div slot="footer">
             <lightning-button variant="neutral" label="Cancel" onclick={handleCancel}></lightning-button>
             <lightning-button variant="brand" label="Add Drivers" data-id="addDriversButton" onclick={handleAddDrivers} class="slds-m-left_x-small"></lightning-button>
