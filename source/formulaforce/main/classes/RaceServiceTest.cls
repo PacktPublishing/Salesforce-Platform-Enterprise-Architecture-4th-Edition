@@ -10,7 +10,7 @@ private class RaceServiceTest {
 	}
 
 	@isTest static void testTemporary() {
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 	    
 			// Production code path
 			try { 
