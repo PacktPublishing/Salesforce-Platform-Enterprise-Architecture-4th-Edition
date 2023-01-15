@@ -77,7 +77,7 @@
         <editable>false</editable>
         <field>Contestant__c.DriverRace__c</field>
         <readable>true</readable>
-    </fieldPermissions>       
+    </fieldPermissions>    
     <fieldPermissions>
         <editable>true</editable>
         <field>Driver__c.Active__c</field>
@@ -132,11 +132,6 @@
         <editable>false</editable>
         <field>Race__c.TotalDNFs__c</field>
         <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Season__c.Current__c</field>
-        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>

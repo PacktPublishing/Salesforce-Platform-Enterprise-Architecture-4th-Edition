@@ -63,9 +63,7 @@ public with sharing class SeasonService {
 		}
 		// Insert records registered with uow above
 		uow.commitWork();
-	}	
-
-	public class SeasonServiceException extends Exception {} 
+	}
 
 	public class UpdateStandings {
 		public Id seasonId;
