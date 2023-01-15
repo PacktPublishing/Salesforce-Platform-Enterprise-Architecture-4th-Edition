@@ -21,7 +21,7 @@ private class SeasonServiceTest {
 	}	
 
 	@isTest static void testTemporary()	{
-		System.runAs(TestData.raceManager()) {	
+		System.runAs(TestUser.raceManager()) {	
 			try {
 				SeasonService.updateStandings(new Set<Id> { });
 				System.assert(false);
