@@ -10,7 +10,7 @@ private class RaceServiceTest {
 	}
 
 	@isTest static void testTemporary() {
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 	    
 			// Production code path
 			try { 
@@ -29,6 +29,15 @@ private class RaceServiceTest {
 			} catch (Exception e) {
 				System.assertEquals('Not implemented', e.getMessage());
 			}
+		}
+	}
+
+	@isTest static void testCSV() {
+		System.runAs(TestUser.raceManager()) {
+			SeasonService.importSeasons(TestData.SEASONSDATA);
+			String csvOutput = RaceService.generateSummaryAsCSV(
+				new Map<Id, SObject>([select Id from Race__c]).keySet());
+			System.assertEquals('2013,Spain,,Lewis Hamilton,,\r\n', csvOutput);		
 		}
 	}
 }
