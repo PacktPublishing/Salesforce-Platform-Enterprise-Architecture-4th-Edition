@@ -1,5 +1,4 @@
 public with sharing class RaceService {
-<<<<<<< HEAD
 
     public static String driverCheckin(Id raceId, Id driverId) {
 		return null;
@@ -86,20 +85,12 @@ public with sharing class RaceService {
 		}
 	}
  	*/
-
-	public static Map<Id, List<ProvisionalResult>> calculateProvisionResults(Set<Id> raceIds) {
-		return service().calculateProvisionResults(raceIds);
-	}
-
-	public static void applyRaceResults(Map<Id, List<ProvisionalResult>> provisionalResultsByRaceId) {
-=======
     
 	public static Map<Id, List<RaceServiceResults.ProvisionalResult>> calculateProvisionResults(Set<Id> raceIds) {
 		return service().calculateProvisionResults(raceIds);
 	}
 
 	public static void applyRaceResults(Map<Id, List<RaceServiceResults.ProvisionalResult>> provisionalResultsByRaceId) {
->>>>>>> chapter-07
 		service().applyRaceResults(provisionalResultsByRaceId);
 	}
 
@@ -110,7 +101,6 @@ public with sharing class RaceService {
 	private static IRaceService service() {
 		return (IRaceService) Application.Service.newInstance(IRaceService.class);
 	}
-<<<<<<< HEAD
 
 	public class RaceServiceException extends Exception {} 	
 
@@ -130,6 +120,4 @@ public with sharing class RaceService {
 		public String qrCodeBase64;
 	}
 	public class DriverCheckinException extends Exception {}
-=======
->>>>>>> chapter-07
 }
