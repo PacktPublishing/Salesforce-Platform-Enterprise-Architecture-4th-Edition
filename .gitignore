@@ -2,10 +2,16 @@
 .sfdx
 .sf
 .vscode
+.env
 dist
 SLDS
 node_modules
+deploy-options.json
+**/target
 /source/formulaforceweb/src/assets/icons
 /source/formulaforceweb/src/assets/images
 /source/formulaforceweb/src/assets/styles
 __lwr_cache__
+.history
+temp/
+/source/formulaforce/main/default/
