@@ -2,7 +2,7 @@
 public class ComplianceServiceTest  {
 	@IsTest
 	private static void testVerify() {
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 			// Test data
 			Season__c season = new Season__c(
 				Name = '2014', 
