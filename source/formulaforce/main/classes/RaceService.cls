@@ -85,12 +85,12 @@ public with sharing class RaceService {
 		}
 	}
  	*/
-
-	public static Map<Id, List<ProvisionalResult>> calculateProvisionResults(Set<Id> raceIds) {
+    
+	public static Map<Id, List<RaceServiceResults.ProvisionalResult>> calculateProvisionResults(Set<Id> raceIds) {
 		return service().calculateProvisionResults(raceIds);
 	}
 
-	public static void applyRaceResults(Map<Id, List<ProvisionalResult>> provisionalResultsByRaceId) {
+	public static void applyRaceResults(Map<Id, List<RaceServiceResults.ProvisionalResult>> provisionalResultsByRaceId) {
 		service().applyRaceResults(provisionalResultsByRaceId);
 	}
 

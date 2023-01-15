@@ -2,8 +2,13 @@
 private class RaceServiceTest {
     	
 	@isTest static void testAwardPoints() {
+<<<<<<< HEAD
 		System.runAs(TestData.raceManager()) {
 			SeasonService.importSeasons(TestData.asJSON());
+=======
+		System.runAs(TestUser.raceManager()) {
+			SeasonService.importSeasons(TestData.SEASONSDATA);
+>>>>>>> chapter-10--alternate-setup
 			RaceService.awardChampionshipPoints(
 				new Map<Id, SObject>([select Id from Race__c]).keySet());
 		}
