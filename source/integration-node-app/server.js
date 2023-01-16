@@ -14,8 +14,8 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true}
 //
 var oauth2 = new jsforce.OAuth2({
   loginUrl : 'https://test.salesforce.com',
-  clientId : '3MVG9BJjUUIJZf1xD4y58EKrqPZ2bFPo9di8aUJaAizL3fb5kdD4z3CaPCgw8sANzTEyXHQZU3qTwOX1jWSBp',
-  clientSecret : '7027100EEEA835D7719EFFFAEC0C39639241ADBC981DF532835A18031D0F176E',
+  clientId : 'Paste Consumer Id here',
+  clientSecret : 'Paste Consumer Secret here',
   redirectUri : 'http://localhost:3000/oauth2/callback'
 });
 
