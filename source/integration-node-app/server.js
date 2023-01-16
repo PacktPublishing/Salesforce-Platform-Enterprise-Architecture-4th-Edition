@@ -14,8 +14,8 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true}
 //
 var oauth2 = new jsforce.OAuth2({
   loginUrl : 'https://test.salesforce.com',
-  clientId : '3MVG98im9TK34CUXlvzt.aCvPXLGu0JxVdrDx7E4c1LCn9AOr.rrPRxA9tpPgQis9JXDp5k87oiLDGpxl6HYn',
-  clientSecret : '3A96C9180536E685F9F83E5E6C050094D915C135A8857F41ADBF1FE7002155B2',
+  clientId : '3MVG9BJjUUIJZf1xD4y58EKrqPZ2bFPo9di8aUJaAizL3fb5kdD4z3CaPCgw8sANzTEyXHQZU3qTwOX1jWSBp',
+  clientSecret : '7027100EEEA835D7719EFFFAEC0C39639241ADBC981DF532835A18031D0F176E',
   redirectUri : 'http://localhost:3000/oauth2/callback'
 });
 
@@ -63,4 +63,4 @@ app.get('/', function(req, res) {
 });
 
 // Start the web server up!
-app.listen(port, () => console.log(`Listening on port ${port}!`))
+app.listen(port, () => console.log(`✅ App listening on port ${port}`))
