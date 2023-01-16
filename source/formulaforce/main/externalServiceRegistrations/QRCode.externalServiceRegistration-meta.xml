@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalServiceRegistration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>QRCode</label>
+    <namedCredential>QRCode</namedCredential>
+    <operations>
+        <active>true</active>
+        <name>qrcode</name>
+    </operations>
+    <registrationProviderType>Custom</registrationProviderType>
+    <schema>{&quot;openapi&quot;:&quot;3.0.0&quot;,&quot;info&quot;:{&quot;title&quot;:&quot;QRCode API&quot;,&quot;version&quot;:&quot;1.0.0&quot;},&quot;servers&quot;:[{&quot;url&quot;:&quot;/api/&quot;}],&quot;paths&quot;:{&quot;/qrcode&quot;:{&quot;post&quot;:{&quot;description&quot;:&quot;Returns QRCode to the caller&quot;,&quot;operationId&quot;:&quot;qrcode&quot;,&quot;requestBody&quot;:{&quot;required&quot;:true,&quot;content&quot;:{&quot;application/json&quot;:{&quot;schema&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;message&quot;:{&quot;type&quot;:&quot;string&quot;}}}}}},&quot;responses&quot;:{&quot;200&quot;:{&quot;content&quot;:{&quot;application/json&quot;:{&quot;schema&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;qrcode&quot;:{&quot;type&quot;:&quot;string&quot;}}}}}}}}}},&quot;components&quot;:{},&quot;tags&quot;:[]}</schema>
+    <schemaType>OpenApi3</schemaType>
+    <schemaUrl>/schema</schemaUrl>
+    <serviceBinding>{&quot;compatibleMediaTypes&quot;:{}}</serviceBinding>
+    <status>Complete</status>
+    <systemVersion>2</systemVersion>
+</ExternalServiceRegistration>

@@ -1,0 +1,14 @@
+{
+  "name": "qrcodeservice",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "qrcode": "^1.5.1",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-routes-express": "^3.3.2",
+    "swagger-ui-express": "^4.6.0"
+  }
+}
