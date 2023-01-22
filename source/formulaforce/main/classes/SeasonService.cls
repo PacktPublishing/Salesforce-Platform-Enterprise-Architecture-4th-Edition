@@ -64,7 +64,7 @@ global with sharing class SeasonService {
 	}	
 	
 	global static void createTestSeason() {
-		importSeasons(TestData.asJSON());		
+		importSeasons(TestData.SEASONSDATA);		
 	}
 
 	global class SeasonServiceException extends Application.ApplicationException {

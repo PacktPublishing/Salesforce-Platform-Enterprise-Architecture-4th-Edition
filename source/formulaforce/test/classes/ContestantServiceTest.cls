@@ -2,15 +2,15 @@
 private class ContestantServiceTest {
     	
 	@isTest static void testAwardPoints() {
-		System.runAs(TestData.raceManager()) {
-			SeasonService.importSeasons(TestData.asJSON());
+	    System.runAs(TestUser.raceManager()) {
+			SeasonService.importSeasons(TestData.SEASONSDATA);
 			ContestantService.awardChampionshipPoints(
 				new Map<Id, SObject>([select Id from Contestant__c]).keySet());
 		}
 	}
 
 	@isTest static void testTemporary() {
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 			try {
 				ContestantService.retireFromRace(null);
 				System.assert(false);
