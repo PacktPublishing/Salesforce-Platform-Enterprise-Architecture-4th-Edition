@@ -9,7 +9,7 @@ public inherited sharing class Drivers extends ApplicationDomain implements Comp
 	 **/
 	public override void onApplyDefaults() {
 		for(Driver__c driver : (List<Driver__c>) Records) {
-			if(driver.ShortName__c == null) {
+			if(String.isBlank(driver.ShortName__c)) {
 				// Upper case first three letters of drivers last name
 				String lastName = driver.Name.substringAfterLast(' ');
 				driver.ShortName__c = lastName.left(3).toUpperCase();

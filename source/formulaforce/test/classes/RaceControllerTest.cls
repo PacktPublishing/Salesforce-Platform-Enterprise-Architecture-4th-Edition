@@ -1,11 +1,11 @@
 @isTest
 private class RaceControllerTest {
-    	
 	@isTest 
 	static void testAwardPoints() {
-		System.runAs(TestData.raceManager()) {
+
+		System.runAs(TestUser.raceManager()) {
 			SeasonService.importSeasons(TestData.SEASONSDATA);
-			RaceController.awardPoints([select Id from Race__c LIMIT 1][0].Id);
+			RaceController.awardPoints([select Id from Race__c LIMIT 1][0].Id);	
 		}
 	}
 }

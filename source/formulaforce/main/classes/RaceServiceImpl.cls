@@ -1,11 +1,11 @@
 public inherited sharing class RaceServiceImpl implements IRaceService {
     
-    public Map<Id, List<RaceService.ProvisionalResult>> calculateProvisionResults(Set<Id> raceIds) {           
-        throw new RaceService.RaceServiceException('Not implemented');
+    public Map<Id, List<RaceServiceResults.ProvisionalResult>> calculateProvisionResults(Set<Id> raceIds) {           
+        throw new RaceServiceException('Not implemented');
     }
 
-    public void applyRaceResults(Map<Id, List<RaceService.ProvisionalResult>> provisionalResultsByRaceId) {
-        throw new RaceService.RaceServiceException('Not implemented');
+    public void applyRaceResults(Map<Id, List<RaceServiceResults.ProvisionalResult>> provisionalResultsByRaceId) {
+        throw new RaceServiceException('Not implemented');
     }
 
     public void awardChampionshipPoints(Set<Id> raceIds) {
