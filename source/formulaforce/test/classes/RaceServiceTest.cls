@@ -2,7 +2,7 @@
 private class RaceServiceTest {
     	
 	@isTest static void testAwardPoints() {
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 			SeasonService.importSeasons(TestData.SEASONSDATA);
 			RaceService.awardChampionshipPoints(
 				new Map<Id, SObject>([select Id from Race__c]).keySet());
@@ -10,7 +10,7 @@ private class RaceServiceTest {
 	}
 
 	@isTest static void testTemporary() {
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 	    
 			// Production code path
 			try { 
@@ -33,9 +33,11 @@ private class RaceServiceTest {
 	}
 
 	@isTest static void testCSV() {
-		SeasonService.importSeasons(TestData.SEASONSDATA);
-		String csvOutput = RaceService.generateSummaryAsCSV(
-			new Map<Id, SObject>([select Id from Race__c]).keySet());
-		System.assertEquals('2013,Spain,,Lewis Hamilton,,\r\n', csvOutput);		
-	}	
+		System.runAs(TestUser.raceManager()) {
+			SeasonService.importSeasons(TestData.SEASONSDATA);
+			String csvOutput = RaceService.generateSummaryAsCSV(
+				new Map<Id, SObject>([select Id from Race__c]).keySet());
+			System.assertEquals('2013,Spain,,Lewis Hamilton,,\r\n', csvOutput);		
+		}
+	}
 }

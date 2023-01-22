@@ -4,7 +4,7 @@ private class ContestantsTest
 	@IsTest
 	private static void testAddContestantNoneScheduled()
 	{
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 			// Test data
 			Season__c season = new Season__c(Name = '2014', Year__c = '2014');
 			insert season;
@@ -34,7 +34,7 @@ private class ContestantsTest
 	@IsTest
 	private static void testChangeContestantNoneScheduled()
 	{
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 			// Test data
 			Season__c season = new Season__c(Name = '2014', Year__c = '2014');
 			insert season;
@@ -67,9 +67,8 @@ private class ContestantsTest
 	}
 
 	@IsTest
-	private static void testAddChampionshipPoints()
-	{
-		System.runAs(TestData.raceManager()) {
+	private static void testAddChampionshipPoints() {
+	    System.runAs(TestUser.raceManager()) {
 			// Test data
 			Season__c season = new Season__c(Name = '2014', Year__c = '2014');
 			insert season;
@@ -81,6 +80,7 @@ private class ContestantsTest
 			insert contestant;
 			race.Status__c = 'Finished';
 			update race;
+
 			contestant.RacePosition__c = 1;
 			update contestant;
 
@@ -95,7 +95,7 @@ private class ContestantsTest
 	@IsTest
 	private static void testChangeContestantNoneScheduledNoDML()
 	{
-		System.runAs(TestData.raceManager()) {
+		System.runAs(TestUser.raceManager()) {
 			// Given
 			Race__c race = new Race__c(
 					Id = fflib_IDGenerator.generate(Schema.Race__c.SObjectType),
