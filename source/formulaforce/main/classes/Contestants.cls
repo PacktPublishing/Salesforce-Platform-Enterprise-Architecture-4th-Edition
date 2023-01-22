@@ -14,7 +14,7 @@ public inherited sharing class Contestants extends ApplicationDomain {
             raceIds.add(contestant.Race__c);		    
 		}
 		RacesSelector raceSelector = new RacesSelector();
-		raceSelector.setUserMode(false); // System mode check no need for user to have access
+		raceSelector.setDataAccess(fflib_SObjectSelector.DataAccess.USER_MODE); // System mode check no need for user to have access
 		Map<Id, Race__c> associatedRaces = 
 			new Map<Id, Race__c>(raceSelector.selectById(raceIds));
 
@@ -73,8 +73,8 @@ public inherited sharing class Contestants extends ApplicationDomain {
 		Set<Id> raceIds = new Set<Id>();
 		for(Contestant__c contestant : contestants) {
             raceIds.add(contestant.Race__c);		    
-		}			
-		return new Map<Id, Race__c>((List<Race__c>)Application.Selector.selectById(raceIds));		
+		}
+		return raceIds.isEmpty() ? new Map<Id, Race__c>() : new Map<Id, Race__c>((List<Race__c>)Application.Selector.selectById(raceIds));		
 	}
 
 	public class Constructor implements fflib_SObjectDomain.IConstructable {

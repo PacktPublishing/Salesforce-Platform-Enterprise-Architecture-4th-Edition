@@ -11,7 +11,7 @@ private class SeasonServiceTest {
 	}
 
 	@isTest static void testImportSeasons() {
-		System.runAs(TestData.raceManager()) {
+	    System.runAs(TestUser.raceManager()) {
 			SeasonService.importSeasons(TestData.SEASONSDATA);
 			System.assertEquals(1, Database.countQuery('select count() from Driver__c'));
 			System.assertEquals(1, Database.countQuery('select count() from Season__c'));
@@ -21,7 +21,7 @@ private class SeasonServiceTest {
 	}	
 
 	@isTest static void testTemporary()	{
-		System.runAs(TestData.raceManager()) {	
+		System.runAs(TestUser.raceManager()) {	
 			try {
 				SeasonService.updateStandings(new Set<Id> { });
 				System.assert(false);
