@@ -1,0 +1,426 @@
+{
+    "version": "56.0",
+    "nodes": {
+        "LOAD_DATASET0": {
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "results",
+                    "name": "results",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "results_constructorId",
+                    "results_positionText",
+                    "results_time",
+                    "results_fastestLapTime",
+                    "results_driverId",
+                    "results_fastestLapSpeed",
+                    "results_resultId",
+                    "results_raceId",
+                    "results_position",
+                    "results_milliseconds",
+                    "results_number",
+                    "results_positionOrder",
+                    "results_points",
+                    "results_rank",
+                    "results_fastestLap",
+                    "results_statusId",
+                    "results_laps",
+                    "results_grid"
+                ],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
+        },
+        "JOIN0": {
+            "action": "join",
+            "parameters": {
+                "joinType": "LOOKUP",
+                "leftKeys": [
+                    "results_statusId"
+                ],
+                "rightKeys": [
+                    "status_statusId"
+                ],
+                "rightQualifier": "status"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "LOAD_DATASET0",
+                "LOAD_DATASET1"
+            ]
+        },
+        "LOAD_DATASET1": {
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "status",
+                    "name": "status",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "status_status",
+                    "status_statusId"
+                ],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
+        },
+        "JOIN1": {
+            "action": "join",
+            "parameters": {
+                "joinType": "LOOKUP",
+                "leftKeys": [
+                    "results_constructorId"
+                ],
+                "rightKeys": [
+                    "races_circuitId"
+                ],
+                "rightQualifier": "races"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "JOIN0",
+                "LOAD_DATASET2"
+            ]
+        },
+        "LOAD_DATASET2": {
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "races",
+                    "name": "races",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "races_circuitId",
+                    "races_name",
+                    "races_round"
+                ],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
+        },
+        "JOIN2": {
+            "action": "join",
+            "parameters": {
+                "joinType": "LOOKUP",
+                "leftKeys": [
+                    "results_driverId"
+                ],
+                "rightKeys": [
+                    "driver_driverId"
+                ],
+                "rightQualifier": "drivers"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "status.status_statusId",
+                        "drivers.driver_driverId"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "JOIN1",
+                "LOAD_DATASET3"
+            ]
+        },
+        "LOAD_DATASET3": {
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "drivers",
+                    "name": "drivers",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "driver_nationality",
+                    "driver_surname",
+                    "driver_driverId",
+                    "driver_forename"
+                ],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
+        },
+        "JOIN3": {
+            "action": "join",
+            "parameters": {
+                "joinType": "LOOKUP",
+                "leftKeys": [
+                    "results_constructorId"
+                ],
+                "rightKeys": [
+                    "constructors_constructorId"
+                ],
+                "rightQualifier": "constructo"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "JOIN2",
+                "LOAD_DATASET4"
+            ]
+        },
+        "LOAD_DATASET4": {
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "constructors",
+                    "name": "constructors",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "constructors_name",
+                    "constructors_nationality",
+                    "constructors_constructorId"
+                ],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
+        },
+        "JOIN4": {
+            "action": "join",
+            "parameters": {
+                "joinType": "LOOKUP",
+                "leftKeys": [
+                    "races.races_circuitId"
+                ],
+                "rightKeys": [
+                    "circuits_circuitId"
+                ],
+                "rightQualifier": "circuits"
+            },
+            "schema": {
+                "fields": [],
+                "slice": {
+                    "fields": [
+                        "circuits.circuits_circuitId"
+                    ],
+                    "ignoreMissingFields": true,
+                    "mode": "DROP"
+                }
+            },
+            "sources": [
+                "JOIN3",
+                "LOAD_DATASET5"
+            ]
+        },
+        "LOAD_DATASET5": {
+            "action": "load",
+            "parameters": {
+                "dataset": {
+                    "label": "circuits",
+                    "name": "circuits",
+                    "type": "analyticsDataset"
+                },
+                "fields": [
+                    "circuits_country",
+                    "circuits_name",
+                    "circuits_circuitId"
+                ],
+                "sampleDetails": {
+                    "sortBy": [],
+                    "type": "TopN"
+                }
+            },
+            "sources": []
+        },
+        "OUTPUT0": {
+            "action": "save",
+            "parameters": {
+                "dataset": {
+                    "label": "resultsfull",
+                    "name": "resultsfull",
+                    "type": "analyticsDataset"
+                },
+                "fields": [],
+                "measuresToCurrencies": []
+            },
+            "sources": [
+                "JOIN4"
+            ]
+        }
+    },
+    "ui": {
+        "nodes": {
+            "LOAD_DATASET0": {
+                "label": "results",
+                "type": "LOAD_DATASET",
+                "top": 112,
+                "left": 112,
+                "parameters": {
+                    "sampleSize": 2000
+                }
+            },
+            "JOIN0": {
+                "label": "Join 0",
+                "type": "JOIN",
+                "top": 112,
+                "left": 252
+            },
+            "LOAD_DATASET1": {
+                "label": "status",
+                "type": "LOAD_DATASET",
+                "top": 251.8,
+                "left": 252,
+                "parameters": {
+                    "sampleSize": 2000
+                }
+            },
+            "JOIN1": {
+                "label": "Join 1",
+                "type": "JOIN",
+                "top": 112,
+                "left": 392
+            },
+            "LOAD_DATASET2": {
+                "label": "races",
+                "type": "LOAD_DATASET",
+                "top": 252.2,
+                "left": 392,
+                "parameters": {
+                    "sampleSize": 2000
+                }
+            },
+            "JOIN2": {
+                "label": "Join 2",
+                "type": "JOIN",
+                "top": 112,
+                "left": 532
+            },
+            "LOAD_DATASET3": {
+                "label": "drivers",
+                "type": "LOAD_DATASET",
+                "top": 251.89999999999998,
+                "left": 532,
+                "parameters": {
+                    "sampleSize": 2000
+                }
+            },
+            "JOIN3": {
+                "label": "Join 3",
+                "type": "JOIN",
+                "top": 112,
+                "left": 672
+            },
+            "LOAD_DATASET4": {
+                "label": "constructors",
+                "type": "LOAD_DATASET",
+                "top": 252.3,
+                "left": 672,
+                "parameters": {
+                    "sampleSize": 2000
+                }
+            },
+            "JOIN4": {
+                "label": "Join 4",
+                "type": "JOIN",
+                "top": 112,
+                "left": 812
+            },
+            "LOAD_DATASET5": {
+                "label": "circuits",
+                "type": "LOAD_DATASET",
+                "top": 251.89999999999998,
+                "left": 812,
+                "parameters": {
+                    "sampleSize": 2000
+                }
+            },
+            "OUTPUT0": {
+                "label": "Output 0",
+                "type": "OUTPUT",
+                "top": 112,
+                "left": 952
+            }
+        },
+        "connectors": [
+            {
+                "source": "LOAD_DATASET0",
+                "target": "JOIN0"
+            },
+            {
+                "source": "LOAD_DATASET1",
+                "target": "JOIN0"
+            },
+            {
+                "source": "JOIN0",
+                "target": "JOIN1"
+            },
+            {
+                "source": "LOAD_DATASET2",
+                "target": "JOIN1"
+            },
+            {
+                "source": "JOIN1",
+                "target": "JOIN2"
+            },
+            {
+                "source": "LOAD_DATASET3",
+                "target": "JOIN2"
+            },
+            {
+                "source": "JOIN2",
+                "target": "JOIN3"
+            },
+            {
+                "source": "LOAD_DATASET4",
+                "target": "JOIN3"
+            },
+            {
+                "source": "JOIN3",
+                "target": "JOIN4"
+            },
+            {
+                "source": "LOAD_DATASET5",
+                "target": "JOIN4"
+            },
+            {
+                "source": "JOIN4",
+                "target": "OUTPUT0"
+            }
+        ],
+        "hiddenColumns": []
+    }
+}

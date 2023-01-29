@@ -13,40 +13,40 @@
       "name": "circuits_csv",
       "fields": [
         {
-          "fullyQualifiedName": "circuitId",
-          "name": "circuitId",
+          "fullyQualifiedName": "circuits.circuitId",
+          "name": "circuits_circuitId",
           "type": "Text",
-          "label": "circuitId"
+          "label": "circuits_circuitId"
         },
         {
-          "fullyQualifiedName": "circuitRef",
-          "name": "circuitRef",
+          "fullyQualifiedName": "circuits.circuitRef",
+          "name": "circuits_circuitRef",
           "type": "Text",
-          "label": "circuitRef"
+          "label": "circuits_circuitRef"
         },
         {
-          "fullyQualifiedName": "name",
-          "name": "name",
+          "fullyQualifiedName": "circuits.name",
+          "name": "circuits_name",
           "type": "Text",
-          "label": "name"
+          "label": "circuits_name"
         },
         {
-          "fullyQualifiedName": "location",
-          "name": "location",
+          "fullyQualifiedName": "circuits.location",
+          "name": "circuits_location",
           "type": "Text",
-          "label": "location"
+          "label": "circuits_location"
         },
         {
-          "fullyQualifiedName": "country",
-          "name": "country",
+          "fullyQualifiedName": "circuits.country",
+          "name": "circuits_country",
           "type": "Text",
-          "label": "country"
+          "label": "circuits_country"
         },
         {
-          "fullyQualifiedName": "lat",
-          "name": "lat",
+          "fullyQualifiedName": "circuits.lat",
+          "name": "circuits_lat",
           "type": "Numeric",
-          "label": "lat",
+          "label": "circuits_lat",
           "precision": 18,
           "defaultValue": "0",
           "scale": 5,
@@ -54,10 +54,10 @@
           "decimalSeparator": "."
         },
         {
-          "fullyQualifiedName": "lng",
-          "name": "lng",
+          "fullyQualifiedName": "circuits.lng",
+          "name": "circuits_lng",
           "type": "Numeric",
-          "label": "lng",
+          "label": "circuits_lng",
           "precision": 18,
           "defaultValue": "0",
           "scale": 6,
@@ -65,20 +65,20 @@
           "decimalSeparator": "."
         },
         {
-          "fullyQualifiedName": "alt",
-          "name": "alt",
+          "fullyQualifiedName": "circuits.alt",
+          "name": "circuits_alt",
           "type": "Numeric",
-          "label": "alt",
+          "label": "circuits_alt",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "url",
-          "name": "url",
+          "fullyQualifiedName": "circuits.url",
+          "name": "circuits_url",
           "type": "Text",
-          "label": "url"
+          "label": "circuits_url"
         }
       ]
     }

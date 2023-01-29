@@ -13,34 +13,34 @@
       "name": "constructors_csv",
       "fields": [
         {
-          "fullyQualifiedName": "constructorId",
-          "name": "constructorId",
+          "fullyQualifiedName": "constructors.constructorId",
+          "name": "constructors_constructorId",
           "type": "Text",
-          "label": "constructorId"
+          "label": "constructors_constructorId"
         },
         {
-          "fullyQualifiedName": "constructorRef",
-          "name": "constructorRef",
+          "fullyQualifiedName": "constructors.constructorRef",
+          "name": "constructors_constructorRef",
           "type": "Text",
-          "label": "constructorRef"
+          "label": "constructors_constructorRef"
         },
         {
-          "fullyQualifiedName": "name",
-          "name": "name",
+          "fullyQualifiedName": "constructors.name",
+          "name": "constructors_name",
           "type": "Text",
-          "label": "name"
+          "label": "constructors_name"
         },
         {
-          "fullyQualifiedName": "nationality",
-          "name": "nationality",
+          "fullyQualifiedName": "constructors.nationality",
+          "name": "constructors_nationality",
           "type": "Text",
-          "label": "nationality"
+          "label": "constructors_nationality"
         },
         {
-          "fullyQualifiedName": "url",
-          "name": "url",
+          "fullyQualifiedName": "constructors.url",
+          "name": "constructors_url",
           "type": "Text",
-          "label": "url"
+          "label": "constructors_url"
         }
       ]
     }

@@ -13,148 +13,152 @@
       "name": "results_csv",
       "fields": [
         {
-          "fullyQualifiedName": "resultId",
-          "name": "resultId",
+          "fullyQualifiedName": "results.resultId",
+          "name": "results_resultId",
           "type": "Text",
-          "label": "resultId"
+          "label": "results_resultId"
         },
         {
-          "fullyQualifiedName": "raceId",
-          "name": "raceId",
+          "fullyQualifiedName": "results.raceId",
+          "name": "results_raceId",
           "type": "Text",
-          "label": "raceId"
+          "label": "results_raceId"
         },
         {
-          "fullyQualifiedName": "driverId",
-          "name": "driverId",
+          "fullyQualifiedName": "results.driverId",
+          "name": "results_driverId",
           "type": "Text",
-          "label": "driverId"
+          "label": "results_driverId"
         },
         {
-          "fullyQualifiedName": "constructorId",
-          "name": "constructorId",
+          "fullyQualifiedName": "results.constructorId",
+          "name": "results_constructorId",
           "type": "Text",
-          "label": "constructorId"
+          "label": "results_constructorId"
         },
         {
-          "fullyQualifiedName": "number",
-          "name": "number",
+          "fullyQualifiedName": "results.number",
+          "name": "results_number",
           "type": "Numeric",
-          "label": "number",
+          "label": "results_number",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "grid",
-          "name": "grid",
+          "fullyQualifiedName": "results.grid",
+          "name": "results_grid",
           "type": "Numeric",
-          "label": "grid",
+          "label": "results_grid",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "position",
-          "name": "position",
+          "fullyQualifiedName": "results.position",
+          "name": "results_position",
           "type": "Numeric",
-          "label": "position",
+          "label": "results_position",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "positionText",
-          "name": "positionText",
+          "fullyQualifiedName": "results.positionText",
+          "name": "results_positionText",
           "type": "Text",
-          "label": "positionText"
+          "label": "results_positionText"
         },
         {
-          "fullyQualifiedName": "positionOrder",
-          "name": "positionOrder",
+          "fullyQualifiedName": "results.positionOrder",
+          "name": "results_positionOrder",
           "type": "Numeric",
-          "label": "positionOrder",
+          "label": "results_positionOrder",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "points",
-          "name": "points",
+          "fullyQualifiedName": "results.points",
+          "name": "results_points",
           "type": "Numeric",
-          "label": "points",
+          "label": "results_points",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "laps",
-          "name": "laps",
+          "fullyQualifiedName": "results.laps",
+          "name": "results_laps",
           "type": "Numeric",
-          "label": "laps",
+          "label": "results_laps",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "time",
-          "name": "time",
+          "fullyQualifiedName": "results.time",
+          "name": "results_time",
           "type": "Text",
-          "label": "time"
+          "label": "results_time"
         },
         {
-          "fullyQualifiedName": "milliseconds",
-          "name": "milliseconds",
+          "fullyQualifiedName": "results.milliseconds",
+          "name": "results_milliseconds",
           "type": "Numeric",
-          "label": "milliseconds",
+          "label": "results_milliseconds",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "fastestLap",
-          "name": "fastestLap",
+          "fullyQualifiedName": "results.fastestLap",
+          "name": "results_fastestLap",
           "type": "Numeric",
-          "label": "fastestLap",
+          "label": "results_fastestLap",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "rank",
-          "name": "rank",
+          "fullyQualifiedName": "results.rank",
+          "name": "results_rank",
           "type": "Numeric",
-          "label": "rank",
+          "label": "results_rank",
           "precision": 18,
           "defaultValue": "0",
           "scale": 0,
           "format": "0"
         },
         {
-          "fullyQualifiedName": "fastestLapTime",
-          "name": "fastestLapTime",
+          "fullyQualifiedName": "results.fastestLapTime",
+          "name": "results_fastestLapTime",
           "type": "Text",
-          "label": "fastestLapTime"
+          "label": "results_fastestLapTime"
         },
         {
-          "fullyQualifiedName": "fastestLapSpeed",
-          "name": "fastestLapSpeed",
+          "fullyQualifiedName": "results.fastestLapSpeed",
+          "name": "results_fastestLapSpeed",
           "type": "Text",
-          "label": "fastestLapSpeed"
+          "label": "results_fastestLapSpeed"
         },
         {
-          "fullyQualifiedName": "status",
-          "name": "status",
-          "type": "Text",
-          "label": "status"
+          "fullyQualifiedName": "results.statusId",
+          "name": "results_statusId",
+          "type": "Numeric",
+          "label": "results_statusId",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
         }
       ]
     }
