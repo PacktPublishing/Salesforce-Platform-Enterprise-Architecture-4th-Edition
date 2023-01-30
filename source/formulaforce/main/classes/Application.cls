@@ -7,7 +7,8 @@ global class Application {
 					Driver__c.SObjectType, 
 					Season__c.SObjectType, 
 				  	Race__c.SObjectType, 
-				  	Contestant__c.SObjectType });
+				  	Contestant__c.SObjectType,
+                    RaceNewsFeed__e.SObjectType });
 				  	
     // Configure and create the ServiceFactory for this Application
     public static final fflib_Application.ServiceFactory Service =

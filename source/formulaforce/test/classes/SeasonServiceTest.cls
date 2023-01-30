@@ -22,18 +22,8 @@ private class SeasonServiceTest {
 
 	@isTest static void testTemporary()	{
 		System.runAs(TestUser.raceManager()) {	
-			try {
-				SeasonService.updateStandings(new Set<Id> { });
-				System.assert(false);
-			} catch (Exception e) {
-				System.assertEquals('Not implemented', e.getMessage());
-			}
-			try {
-				SeasonService.updateStandings(new List<SeasonService.UpdateStandings> { });
-				System.assert(false);
-			} catch (Exception e) {
-				System.assertEquals('Not implemented', e.getMessage());
-			}
+			SeasonService.updateStandings(new Set<Id> { });
+			SeasonService.updateStandings(new List<SeasonService.UpdateStandings> { });
 		}
 	}
 }

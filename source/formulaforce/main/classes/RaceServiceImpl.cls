@@ -23,7 +23,7 @@ public inherited sharing class RaceServiceImpl implements IRaceService {
         new Contestants(contestants).awardChampionshipPoints(uow);
 
         // Send event notifying the press that the results are published
-        uow.registerNew(
+        uow.registerPublishBeforeTransaction(
             new RaceNewsFeed__e(
                 Category__c = 'Race News', 
                 Content__c = 'Championship points have been officially calculated'));
