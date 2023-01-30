@@ -43,7 +43,6 @@ public inherited sharing class RaceServiceImpl implements IRaceService {
         }
 
         // Load and run the DataWeave script to convert all the summaries to CSV
-        System.debug('Size is ' + allSummaries.size());
         DataWeave.Script dwscript = DataWeave.Script.createScript('raceSummaryToCsv');
         DataWeave.Result dwresult = dwscript.execute(new Map<String, Object>{'records' => allSummaries});
 		return (String) dwresult.getValue();
