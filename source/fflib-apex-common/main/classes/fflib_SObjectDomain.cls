@@ -41,14 +41,7 @@
 public virtual with sharing class fflib_SObjectDomain
 		extends fflib_SObjects
 	implements fflib_ISObjectDomain
-{
-    /**
-     * Constructor required for Test.createStub
-     **/
-    public fflib_SObjectDomain() {        
-        super();
-    }
-
+{	
 	/**
 	 * Provides access to the data represented by this domain class
 	 **/
@@ -58,7 +51,6 @@ public virtual with sharing class fflib_SObjectDomain
 			return getRecords();
 		}
 	}
-
 
 	/**
      * Provides access to Trigger.oldMap and allowing it to be mocked in unit-tests
@@ -122,6 +114,13 @@ public virtual with sharing class fflib_SObjectDomain
 		TriggerEventByClass = new Map<Type, TriggerEvent>();
 	}
 	
+    /**
+     * Constructor required for Test.createStub
+     **/
+    public fflib_SObjectDomain() {        
+        super();
+    }
+
 	/**
 	 * Constructs the domain class with the data on which to apply the behaviour implemented within
 	 *
