@@ -21,7 +21,7 @@ public inherited sharing class Contestants extends ApplicationDomain {
             raceIds.add(contestant.Race__c);		    
 		}
 		RacesSelector raceSelector = new RacesSelector();
-		raceSelector.setUserMode(false); // System mode check no need for user to have access
+		raceSelector.setDataAccess(fflib_SObjectSelector.DataAccess.SYSTEM_MODE); // System mode check no need for user to have access
 		Map<Id, Race__c> associatedRaces = 
 			new Map<Id, Race__c>(raceSelector.selectById(raceIds));
 
