@@ -22,6 +22,7 @@ public inherited sharing class RaceServiceImpl implements IRaceService {
         
         // Delegate to Contestant Domain class
         Contestants contestants = (Contestants) Application.Domain.newInstance(contestantsList);
+		contestants.awardChampionshipPoints(uow);		
 
         // Send event notifying the press that the results are published
         uow.registerPublishBeforeTransaction(
