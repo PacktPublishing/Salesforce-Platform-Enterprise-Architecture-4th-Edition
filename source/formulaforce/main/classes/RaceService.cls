@@ -28,7 +28,7 @@ public with sharing class RaceService {
 		 */
 	}
 
-	public static String driverCheckIn(Id raceId, Id driverId, DriverCheckinCompleteCallaback callback) {
+	public static String driverCheckIn(Id raceId, Id driverId, DriverCheckinCompleteCallback callback) {
 		return null;
 		/**
 		// Build request for Driver Checkin Salesforce Function 
@@ -44,9 +44,9 @@ public with sharing class RaceService {
 		 */
 	}
 
-	public virtual class DriverCheckinCompleteCallaback {}
+	public virtual class DriverCheckinCompleteCallback {}
 	/**	
-	public virtual class DriverCheckinCompleteCallaback implements functions.FunctionCallback {
+	public virtual class DriverCheckinCompleteCallback implements functions.FunctionCallback {
 
 		// Implement standard Function callback and convert into a more specialized form for the caller
 		public void handleResponse(functions.FunctionInvocation result) {
@@ -73,7 +73,7 @@ public with sharing class RaceService {
 		}
 	} 
 
-	public class DriverCheckinCompleteCallabckExample extends DriverCheckinCompleteCallaback {
+	public class DriverCheckinCompleteCallbackExample extends DriverCheckinCompleteCallback {
 		public override void handleResponse(DriverCheckinException callbackException, String qrCodeBase64) {
 			if(callbackException!=null) {
 				// Send User Notification, or Platform Event?
