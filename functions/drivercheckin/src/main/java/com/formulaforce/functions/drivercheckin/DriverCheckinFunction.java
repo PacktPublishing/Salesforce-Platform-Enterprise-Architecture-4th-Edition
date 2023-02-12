@@ -1,14 +1,13 @@
 package com.formulaforce.functions.drivercheckin;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import javax.imageio.ImageIO;
-
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +21,7 @@ import com.salesforce.functions.jvm.sdk.data.RecordModificationResult;
 import com.salesforce.functions.jvm.sdk.data.ReferenceId;
 import com.salesforce.functions.jvm.sdk.data.builder.UnitOfWorkBuilder;
 
-import io.nayuki.qrcodegen.*;
+import io.nayuki.qrcodegen.QrCode;
 
 public class DriverCheckinFunction implements SalesforceFunction<FunctionInput, FunctionOutput> {
 
@@ -62,7 +61,7 @@ public class DriverCheckinFunction implements SalesforceFunction<FunctionInput, 
     LOGGER.info("Commited UoW with {} affected records!", result.size());
 
     // Generate QRCode and return as Base64 encoded image
-    QrCode qr0 = QrCode.encodeText("Hello, world!", QrCode.Ecc.MEDIUM);
+    QrCode qr0 = QrCode.encodeText("Welcome driver and good luck!", QrCode.Ecc.MEDIUM);
     BufferedImage img = toImage(qr0, 4, 10);
     String imageString = "";
       ByteArrayOutputStream bos = new ByteArrayOutputStream();

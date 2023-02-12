@@ -34,7 +34,7 @@ public inherited sharing class ContestantsSelector extends ApplicationSelector i
 		return (List<Contestant__c>) super.selectSObjectsById(ids);
 	}
 
-	public List<Contestant__c> selectByIdWithDriver(Set<Id> driverIds) {
+	public List<Contestant__c> selectByIdWithDriver(Set<Id> contestantIds) {
 	    
 	    fflib_QueryFactory contestantQueryFactory = newQueryFactory();
             
@@ -44,7 +44,7 @@ public inherited sharing class ContestantsSelector extends ApplicationSelector i
                 Contestant__c.Driver__c.getDescribe().getRelationshipName());
                 
 		return Database.query(
-            contestantQueryFactory.setCondition('Id in :driverIds').toSOQL());
+            contestantQueryFactory.setCondition('Id in :contestantIds').toSOQL());
 	}	
 
 	public Map<Id, List<Summary>> selectByRaceIdWithContestantSummary(Set<Id> raceIds) {
