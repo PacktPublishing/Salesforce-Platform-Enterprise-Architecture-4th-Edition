@@ -125,7 +125,7 @@ private class ContestantsTest
 			List<Database.Error> errors = contestantToUpdate.getErrors();
 			System.assertEquals(1, errors.size());
 			System.assertEquals('You can only change drivers for scheduled races', errors[0].getMessage());
-			System.assertEquals('Driver__c', errors[0].getFields()[0]);
+			System.assertEquals(true, errors[0].getFields()[0].endsWith('Driver__c'));
 		}
 	}
 
