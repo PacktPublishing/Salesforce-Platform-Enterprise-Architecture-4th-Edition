@@ -9,13 +9,12 @@ public inherited sharing abstract class ApplicationSelector extends fflib_SObjec
     
     public ApplicationSelector(Boolean includeFieldSetFields) {
         // Application follows the pattern of least privileged execution, so user mode is defaulted on
-        this(includeFieldSetFields, true);
+        this(includeFieldSetFields, fflib_SObjectSelector.DataAccess.USER_MODE );
     }
-    
-    public ApplicationSelector(Boolean includeFieldSetFields, Boolean userMode) {
-        // Allow override of default user mode enforcement to run all queries as system mode (default for Apex) 
-        // - this can also be overriden within the selector methods themselves via fflib_QueryFactory.setEnforceFLS
-        super(includeFieldSetFields, fflib_SObjectSelector.DataAccess.USER_MODE);
+
+    public ApplicationSelector(Boolean includeFieldSetFields, fflib_SObjectSelector.DataAccess dataAccessMode ) {
+        // Allow override of default user mode enforcement
+        super(includeFieldSetFields, dataAccessMode);
         // Disable sorting of select fields in the resulting SOQL improvements performance
         unsortedSelectFields();
     }
