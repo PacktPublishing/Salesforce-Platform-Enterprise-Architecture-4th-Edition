@@ -72,14 +72,12 @@ private class RaceServiceTest {
         ((fflib_SObjectUnitOfWork) mocks.verify(mockUow, 1)).commitWork();        
 	}
 
-	/**
 	@isTest static void testCSV() {
 		System.runAs(TestData.raceManager()) {
 			SeasonService.importSeasons(TestData.asJSON());
 			String csvOutput = RaceService.generateSummaryAsCSV(
 				new Map<Id, SObject>([select Id from Race__c]).keySet());
-			System.assertEquals('2013,Spain,,Lewis Hamilton,,\r\n', csvOutput);		
+			System.assert(csvOutput.startsWith('Car,Driver,Points,Position,Race,RaceTime,Season,Team\r\n"","Lewis Hamilton","","","Austin","","2019",""'));
 		}
 	}	
-	 */
 }
