@@ -20,7 +20,7 @@ global with sharing class ComplianceService
 	/**
 	 * Provides general support to verify compliance in the application
 	 **/
-	public static void verify(Set<Id> recordIds) {
+	global static void verify(Set<Id> recordIds) {
 		// Dynamically create the Domain class instance for these records
 		fflib_IDomain domain = Application.Domain.newInstance(recordIds);
 		if(domain instanceof ICompliant) {

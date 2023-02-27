@@ -62,7 +62,7 @@ public class DriverCheckinFunction implements SalesforceFunction<FunctionInput, 
     LOGGER.info("Commited UoW with {} affected records!", result.size());
 
     // Generate QRCode and return as Base64 encoded image
-    QrCode qr0 = QrCode.encodeText("Hello, world!", QrCode.Ecc.MEDIUM);
+    QrCode qr0 = QrCode.encodeText("Welcome driver and good luck!", QrCode.Ecc.MEDIUM);
     BufferedImage img = toImage(qr0, 4, 10);
     String imageString = "";
       ByteArrayOutputStream bos = new ByteArrayOutputStream();
