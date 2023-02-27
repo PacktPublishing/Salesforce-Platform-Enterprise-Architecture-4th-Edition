@@ -34,7 +34,7 @@ public inherited sharing class ContestantsSelector extends ApplicationSelector i
 		return (List<Contestant__c>) super.selectSObjectsById(ids);
 	}
 
-	public List<Contestant__c> selectByIdWithDriver(Set<Id> driverIds) {
+	public List<Contestant__c> selectByIdWithDriver(Set<Id> contestantIds) {
 	    
 	    fflib_QueryFactory contestantQueryFactory = newQueryFactory();
             
@@ -44,7 +44,7 @@ public inherited sharing class ContestantsSelector extends ApplicationSelector i
                 Contestant__c.Driver__c.getDescribe().getRelationshipName());
                 
 		return Database.query(
-            contestantQueryFactory.setCondition('Id in :driverIds').toSOQL());
+            contestantQueryFactory.setCondition('Id in :contestantIds').toSOQL());
 	}	
 
 	public Map<Id, List<Summary>> selectByRaceIdWithContestantSummary(Set<Id> raceIds) {
@@ -100,28 +100,25 @@ public inherited sharing class ContestantsSelector extends ApplicationSelector i
 	    return standings;
 	}
 
-	public class Summary {
-		private Contestant__c contestant;				
-		public String Season { 
-			get { return contestant.Race__r.Season__r.Name; }}		
-		public String Race { 
-			get { return contestant.Race__r.Name; } }	
-		public Decimal Position { 
-			get { return contestant.RacePosition__c; } }				
-        public Decimal Points { 
-            get { return contestant.ChampionshipPoints__c; } }                
-        public Decimal RaceTime { 
-            get { return contestant.RaceTime__c; } }                
-		public String Driver { 
-			get { return contestant.Driver__r.Name; } }		
-		public String Team { 
-			get { return contestant.Driver__r.Team__r.Name; } }		
-		public String Car { 
-			get { return contestant.Car__r.Name; } }		
-		@TestVisible			
-		private Summary(Contestant__c contestant) { 
-			this.contestant = contestant; }
-	}
+   public class Summary {
+      public String Season { get; set; }
+      public String Race { get; set; }
+      public Decimal Position { get; set; }
+      public Decimal Points { get; set; }
+      public Decimal RaceTime { get; set; }
+      public String Driver { get; set; }
+      public String Team { get; set; }
+      public String Car { get; set; }
+       public Summary(Contestant__c contestant) {
+           this.Season = contestant.Race__r.Season__r.Name;
+           this.Race = contestant.Race__r.Name;
+           this.Position = contestant.RacePosition__c;
+           this.RaceTime = contestant.RaceTime__c;
+           this.Driver = contestant.Driver__r.Name;
+           this.Team = contestant.Driver__r.Team__r.Name;
+           this.Car = contestant.Car__r.Name;
+       }
+   }
     
     public class Standing implements Comparable {     
         private AggregateResult result;
