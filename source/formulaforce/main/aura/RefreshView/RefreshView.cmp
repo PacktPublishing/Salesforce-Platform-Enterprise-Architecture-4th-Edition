@@ -1,3 +1,0 @@
-<aura:component implements="flexipage:availableForRecordHome" access="global">
-    <lightning:messageChannel type="RefreshView__c" onMessage="{!c.handleMessage}"/>
-</aura:component>	
