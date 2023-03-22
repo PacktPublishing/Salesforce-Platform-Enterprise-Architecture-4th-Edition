@@ -1,0 +1,166 @@
+{
+  "fileFormat": {
+    "charsetName": "UTF-8",
+    "fieldsDelimitedBy": ",",
+    "fieldsEnclosedBy": "\"",
+    "linesTerminatedBy": "\n"
+  },
+  "objects": [
+    {
+      "connector": "CSV",
+      "fullyQualifiedName": "results_csv",
+      "label": "results.csv",
+      "name": "results_csv",
+      "fields": [
+        {
+          "fullyQualifiedName": "results.resultId",
+          "name": "results_resultId",
+          "type": "Text",
+          "label": "results_resultId"
+        },
+        {
+          "fullyQualifiedName": "results.raceId",
+          "name": "results_raceId",
+          "type": "Text",
+          "label": "results_raceId"
+        },
+        {
+          "fullyQualifiedName": "results.driverId",
+          "name": "results_driverId",
+          "type": "Text",
+          "label": "results_driverId"
+        },
+        {
+          "fullyQualifiedName": "results.constructorId",
+          "name": "results_constructorId",
+          "type": "Text",
+          "label": "results_constructorId"
+        },
+        {
+          "fullyQualifiedName": "results.number",
+          "name": "results_number",
+          "type": "Numeric",
+          "label": "results_number",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.grid",
+          "name": "results_grid",
+          "type": "Numeric",
+          "label": "results_grid",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.position",
+          "name": "results_position",
+          "type": "Numeric",
+          "label": "results_position",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.positionText",
+          "name": "results_positionText",
+          "type": "Text",
+          "label": "results_positionText"
+        },
+        {
+          "fullyQualifiedName": "results.positionOrder",
+          "name": "results_positionOrder",
+          "type": "Numeric",
+          "label": "results_positionOrder",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.points",
+          "name": "results_points",
+          "type": "Numeric",
+          "label": "results_points",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.laps",
+          "name": "results_laps",
+          "type": "Numeric",
+          "label": "results_laps",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.time",
+          "name": "results_time",
+          "type": "Text",
+          "label": "results_time"
+        },
+        {
+          "fullyQualifiedName": "results.milliseconds",
+          "name": "results_milliseconds",
+          "type": "Numeric",
+          "label": "results_milliseconds",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.fastestLap",
+          "name": "results_fastestLap",
+          "type": "Numeric",
+          "label": "results_fastestLap",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.rank",
+          "name": "results_rank",
+          "type": "Numeric",
+          "label": "results_rank",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "results.fastestLapTime",
+          "name": "results_fastestLapTime",
+          "type": "Text",
+          "label": "results_fastestLapTime"
+        },
+        {
+          "fullyQualifiedName": "results.fastestLapSpeed",
+          "name": "results_fastestLapSpeed",
+          "type": "Text",
+          "label": "results_fastestLapSpeed"
+        },
+        {
+          "fullyQualifiedName": "results.statusId",
+          "name": "results_statusId",
+          "type": "Numeric",
+          "label": "results_statusId",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        }
+      ]
+    }
+  ]
+}

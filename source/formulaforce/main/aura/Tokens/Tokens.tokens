@@ -1,0 +1,3 @@
+<aura:tokens>
+	<aura:token name="selectedRace" value="#FF0000"/>
+</aura:tokens>

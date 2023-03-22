@@ -1,0 +1,27 @@
+{
+  "name": "lightning-platform-enterprise-architecture-fourth-edition",
+  "version": "1.0.0",
+  "description": "Lightning Platform Enterprise Architecture - Fourth Edition",
+  "main": "index.js",
+  "scripts": {
+    "test:unit": "lwc-jest",
+    "test:unit:watch": "lwc-jest --watch",
+    "test:unit:debug": "lwc-jest --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PacktPublishing/Salesforce-Platform-Enterprise-Architecture-4th-Edition.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PacktPublishing/Salesforce-Platform-Enterprise-Architecture-4th-Edition/issues"
+  },
+  "homepage": "https://github.com/PacktPublishing/Salesforce-Platform-Enterprise-Architecture-4th-Editionn#README",
+  "devDependencies": {
+    "@salesforce/lwc-jest": "^0.5.1"
+  },
+  "dependencies": {
+    "jest-junit": "^7.0.0"
+  }
+}

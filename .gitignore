@@ -1,0 +1,11 @@
+.DS_Store
+.sfdx
+.sf
+.vscode
+dist
+SLDS
+node_modules
+/source/formulaforceweb/src/assets/icons
+/source/formulaforceweb/src/assets/images
+/source/formulaforceweb/src/assets/styles
+__lwr_cache__

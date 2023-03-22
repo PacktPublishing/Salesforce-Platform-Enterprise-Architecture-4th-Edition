@@ -1,0 +1,3 @@
+:host(.selected) {
+    background: var(--c-selectedRace)
+}

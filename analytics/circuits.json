@@ -1,0 +1,86 @@
+{
+  "fileFormat": {
+    "charsetName": "UTF-8",
+    "fieldsDelimitedBy": ",",
+    "fieldsEnclosedBy": "\"",
+    "linesTerminatedBy": "\n"
+  },
+  "objects": [
+    {
+      "connector": "CSV",
+      "fullyQualifiedName": "circuits_csv",
+      "label": "circuits.csv",
+      "name": "circuits_csv",
+      "fields": [
+        {
+          "fullyQualifiedName": "circuits.circuitId",
+          "name": "circuits_circuitId",
+          "type": "Text",
+          "label": "circuits_circuitId"
+        },
+        {
+          "fullyQualifiedName": "circuits.circuitRef",
+          "name": "circuits_circuitRef",
+          "type": "Text",
+          "label": "circuits_circuitRef"
+        },
+        {
+          "fullyQualifiedName": "circuits.name",
+          "name": "circuits_name",
+          "type": "Text",
+          "label": "circuits_name"
+        },
+        {
+          "fullyQualifiedName": "circuits.location",
+          "name": "circuits_location",
+          "type": "Text",
+          "label": "circuits_location"
+        },
+        {
+          "fullyQualifiedName": "circuits.country",
+          "name": "circuits_country",
+          "type": "Text",
+          "label": "circuits_country"
+        },
+        {
+          "fullyQualifiedName": "circuits.lat",
+          "name": "circuits_lat",
+          "type": "Numeric",
+          "label": "circuits_lat",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 5,
+          "format": "0.0####",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "circuits.lng",
+          "name": "circuits_lng",
+          "type": "Numeric",
+          "label": "circuits_lng",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 6,
+          "format": "0.00####",
+          "decimalSeparator": "."
+        },
+        {
+          "fullyQualifiedName": "circuits.alt",
+          "name": "circuits_alt",
+          "type": "Numeric",
+          "label": "circuits_alt",
+          "precision": 18,
+          "defaultValue": "0",
+          "scale": 0,
+          "format": "0"
+        },
+        {
+          "fullyQualifiedName": "circuits.url",
+          "name": "circuits_url",
+          "type": "Text",
+          "label": "circuits_url"
+        }
+      ]
+    }
+  ]
+}
