@@ -1,9 +1,0 @@
-[_]
-schema-version = "0.2"
-
-[com.salesforce]
-schema-version = "0.1"
-id = "drivercheckin"
-description = "Check the driver into the race"
-type = "function"
-salesforce-api-version = "54.0"
