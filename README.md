@@ -1,5 +1,6 @@
 # Salesforce Platform Enterprise Architecture - Fourth Edition
-This is the code repository for [Salesforce Platform Enterprise Architecture - Fourth Edition](https://www.amazon.com/Salesforce-Platform-Enterprise-Architecture-applications/dp/1804619779/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=&sr=), published by Packt.
+This is the code repository for [Salesforce Platform Enterprise Architecture - Fourth Edition](https://www.amazon.com/Salesforce-Platform-Enterprise-Architecture-applications/dp/1804619779/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=&sr=), published by Packt. 
+****Important****: The code snippets for each chapters are in the respective chapter-wise branch of the repository.  
 
 **A must-read guide to help you architect and deliver packaged applications for enterprise needs**
 
@@ -64,9 +65,9 @@ You can get more engaged on the discord server for more latest updates and discu
 ## Download a free PDF <img alt="Coding" height="25" width="40" src="https://emergency.com.au/wp-content/uploads/2021/03/free.gif">
 
 _If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost. Simply click on the link to claim your free PDF._
-[Packt link for free-ebook to be added here](same Packt link for free-ebook to be added here) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
+[https://packt.link/free-ebook/9781804619773](https://packt.link/free-ebook/9781804619773) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
 
-We also provide a PDF file that has color images of the screenshots/diagrams used in this book at "Shortened packt link for GraphicBundle to be added here" <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
+We also provide a PDF file that has color images of the screenshots/diagrams used in this book at "https://packt.link/PTWMq" <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
 
 
 ## Get to Know the Author
